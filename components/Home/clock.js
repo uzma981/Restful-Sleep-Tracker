@@ -10,7 +10,7 @@ export default function Clock({ navigation }) {
   const [date, setDate] = useState(moment().format("LL"));
 
   return (
-    <View style={styles.container}>
+    <View style>
         <View style={styles.clockContainer}>
           <Text style={styles.timeText}>
             {time}
@@ -24,10 +24,6 @@ export default function Clock({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
   clockContainer: {
     borderWidth: 1,
     marginTop: 50,

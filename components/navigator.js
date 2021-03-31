@@ -7,6 +7,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './Home/homeScreen';
 import AlarmScreen from './Home/alarm';
+import ActivityScreen from './Home/activity';
+import SleepScreen from './Home/sleep';
 
 import DiaryScreen from './Diary/diaryScreen';
 import GraphScreen from './Graph/graphScreen';
@@ -17,7 +19,9 @@ let HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Activity" component={ActivityScreen} />
       <HomeStack.Screen name="Alarm" component={AlarmScreen} />
+      <HomeStack.Screen name="Sleep" component={SleepScreen} />
     </HomeStack.Navigator>
   );
 }
