@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput, Button} from 'react-native';
 import SelectMultiple from 'react-native-select-multiple'
 
 let options = ['Caffeine', 'Exercise', 'Shower']
 
 export default function ActivityScreen() {
+  const [text, onChangeText] = React.useState("Other");
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   onSelectionsChange = (selectedOptions) => {
@@ -12,12 +13,28 @@ export default function ActivityScreen() {
   }
 
   return (
-    <View>
-      <SelectMultiple
-        items={options}
-        renderLabel={renderLabel}
-        selectedItems={selectedOptions}
-        onSelectionsChange={onSelectionsChange} />
+    <View style={styles.container}>
+      <View>
+        <SelectMultiple
+          items={options}
+          renderLabel={renderLabel}
+          selectedItems={selectedOptions}
+          onSelectionsChange={onSelectionsChange} />
+      </View>
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          onPress={() => console.log("hi")}
+          title="Submit"
+          color="#841584"
+        />
+      </View>
     </View>
   );
 }
@@ -35,14 +52,23 @@ const renderLabel = (label, style) => {
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
+    flex: 1,
   },
   renderLabel: {
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  text: {
+    fontSize: 20,
+  },
+  input: {
+    marginTop: 20,
+    margin: 12,
+    borderWidth: 1,
+    padding: 8,
+    fontSize: 20
+  },
+  button: {
   }
 });
 

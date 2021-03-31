@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#000'
+    backgroundColor: '#fff'
   },
   clock: {
     flex: 1,
