@@ -1,6 +1,8 @@
 import React, {useState} from 'react';  
 import {StyleSheet, Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
-//import TimePicker from 'react-native-simple-time-picker';
+import ReactNativeAN from 'react-native-alarm-notification';
+
+import { CircleButton } from '../config';
 
 export default function AlarmScreen() {
   /*
@@ -69,25 +71,6 @@ export default function AlarmScreen() {
     </View>
   );  
 }
-
-const CircleButton = props => (
-  <TouchableOpacity
-    style={{
-      margin: props.margin,
-      height: props.size,
-      width: props.size,
-      backgroundColor: props.color,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: props.size * 2,
-    }}
-    onPress={props.onPress}>
-    <Text style={{color: props.textColor, fontSize: props.fontSize}}>
-      {props.text}
-    </Text>
-  </TouchableOpacity>
-);
-
 
 const styles = StyleSheet.create({
   container: {

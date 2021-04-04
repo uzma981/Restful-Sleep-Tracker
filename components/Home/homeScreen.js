@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
 
 import Clock from "./clock";
+import { CircleButton, globalStyles } from '../config';
+import '../config';
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.clock}>
+      <View style={globalStyles.clock}>
         <TouchableOpacity
           onPress={() => navigation.push("Alarm")}>
           <Clock />
@@ -29,40 +31,23 @@ export default function HomeScreen({ navigation }) {
           textColor="white"
           fontSize={20}
           margin={10}
-          onPress={() => navigation.push("Sleep")}
+          onPress={() => enterSleep({ navigation })}
         />
       </View>
     </View>
   );
 }
 
-const CircleButton = props => (
-  <TouchableOpacity
-    style={{
-      margin: props.margin,
-      height: props.size,
-      width: props.size,
-      backgroundColor: props.color,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: props.size * 2,
-    }}
-    onPress={props.onPress}>
-    <Text style={{color: props.textColor, fontSize: props.fontSize}}>
-      {props.text}
-    </Text>
-  </TouchableOpacity>
-);
+const enterSleep = ({navigation}) => {
+  navigation.navigate('Sleep');
+  global.sleeping = true;
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff'
-  },
-  clock: {
-    flex: 1,
-    alignItems: 'center',
   },
   buttons: {
     flex: 1,
