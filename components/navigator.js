@@ -40,8 +40,6 @@ const HomeStack = createStackNavigator();
 let HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="SignIn" component={SignInScreen} />
-      <HomeStack.Screen name="SignUp" component={SignUpScreen} />
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Activity" component={ActivityScreen} />
       <HomeStack.Screen name="Alarm" component={AlarmScreen} />
