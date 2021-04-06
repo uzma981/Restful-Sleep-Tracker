@@ -19,7 +19,7 @@ const SplashScreen =({navigation}) => {
       <Text style ={styles.title}>Sleep Tracker App </Text>
       <Text style ={styles.text}>Sign in with account</Text>
       <View styles = {styles.button}>
-      <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
          <LinearGradient
           colors={['#9370DB', '#BB8FCE']}
           style={styles.signIn}

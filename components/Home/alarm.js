@@ -74,7 +74,7 @@ export default function AlarmScreen({navigation}) {
 
 let submitChanges = ({navigation}) => {
   navigation.goBack();
-}:
+};
 
 const styles = StyleSheet.create({
   container: {

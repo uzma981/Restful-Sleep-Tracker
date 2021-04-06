@@ -17,13 +17,17 @@ import SettingsScreen from './Settings/settingsScreen';
 import SplashScreen from './splashscreen';
 import SignInScreen from './Login/LoginScreen';
 import SignUpScreen from './Login/SignUpScreen';
+import ForgotPasswordScreen from './Login/ForgotPasswordScreen';
 
 const Drawer = createDrawerNavigator();
 export default function Navigator() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator initialRouteName="Splash">
         <Drawer.Screen name="Splash" component={SplashScreen} />
+        <Drawer.Screen name="SignIn" component={SignInScreen} />
+        <Drawer.Screen name="SignUp" component={SignUpScreen} />
+        <Drawer.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Drawer.Screen name="Home" component={TabNavigationScreens} />
         <Drawer.Screen name="Sleep" component={SleepScreen} />
         <Drawer.Screen name="Alarm" component={AlarmScreen} />

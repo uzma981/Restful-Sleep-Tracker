@@ -37,7 +37,7 @@ const SignInScreen =({navigation}) => {
             
             />
         </View>
-        <TouchableOpacity onPress={()=>navigation.navigate('ForgotPasswordScreen')}>
+        <TouchableOpacity onPress={()=>navigation.navigate('ForgotPassword')}>
           <Text style={styles.forgot}>Forgot Password?</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.loginBtn}>
@@ -78,7 +78,7 @@ const SignInScreen =({navigation}) => {
                   }} />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=>navigation.navigate('SignUpScreen')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
           </View >
