@@ -11,7 +11,7 @@ const SplashScreen =({navigation}) => {
     <View style={styles.container}>
       <StatusBar backgroundColor='#000000' barStyle='light-content'/>
       <View style={styles.header}>
-      <Image source ={require('../navigation/backgroundPurple.jpg')} />
+      <Image source={require('./images/backgroundPurple.jpg')} />
     </View>
   
     <Animatable.View style={styles.footer}

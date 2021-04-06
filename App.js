@@ -1,10 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import TabNavigator from './components/navigator';
+import Navigator from './components/navigator';
+import './components/config';
 
 export default function App() {
   return (
-    <TabNavigator />
+    <Navigator />
   );
 }
 

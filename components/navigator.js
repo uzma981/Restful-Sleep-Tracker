@@ -14,12 +14,16 @@ import SleepScreen from './Home/sleep';
 import DiaryScreen from './Diary/diaryScreen';
 import GraphScreen from './Graph/graphScreen';
 import SettingsScreen from './Settings/settingsScreen';
+import SplashScreen from './splashscreen';
+import SignInScreen from './Login/LoginScreen';
+import SignUpScreen from './Login/SignUpScreen';
 
 const Drawer = createDrawerNavigator();
 export default function Navigator() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Splash" component={SplashScreen} />
         <Drawer.Screen name="Home" component={TabNavigationScreens} />
         <Drawer.Screen name="Sleep" component={SleepScreen} />
         <Drawer.Screen name="Alarm" component={AlarmScreen} />
@@ -32,6 +36,8 @@ const HomeStack = createStackNavigator();
 let HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
+      <HomeStack.Screen name="SignIn" component={SignInScreen} />
+      <HomeStack.Screen name="SignUp" component={SignUpScreen} />
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Activity" component={ActivityScreen} />
       <HomeStack.Screen name="Alarm" component={AlarmScreen} />

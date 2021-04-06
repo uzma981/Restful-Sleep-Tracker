@@ -4,7 +4,7 @@ import ReactNativeAN from 'react-native-alarm-notification';
 
 import { CircleButton } from '../config';
 
-export default function AlarmScreen() {
+export default function AlarmScreen({navigation}) {
   /*
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -66,11 +66,15 @@ export default function AlarmScreen() {
         textColor="white"
         fontSize={20}
         margin={50}
-        onPress={() => console.log("test")}
+        onPress={() => submitChanges({navigation})}
       />
     </View>
   );  
 }
+
+let submitChanges = ({navigation}) => {
+  navigation.goBack();
+}:
 
 const styles = StyleSheet.create({
   container: {
