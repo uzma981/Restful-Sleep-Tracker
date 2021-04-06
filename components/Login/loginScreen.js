@@ -7,7 +7,7 @@ const SignInScreen =({navigation}) => {
   return (
       <View style={styles.container}>
         <View style={styles.skipButton}>
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}
         style={[styles.signIn,{
             marginTop: 50,
             position: 'absolute'
