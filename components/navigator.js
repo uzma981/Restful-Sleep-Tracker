@@ -11,9 +11,16 @@ import AlarmScreen from './Home/alarm';
 import ActivityScreen from './Home/activity';
 import SleepScreen from './Home/sleep';
 
-import DiaryScreen from './Diary/diaryScreen';
+import CalendarScreen from './Diary/Calendar';
+import SubmitScreen from './Diary/Submit';
+import QuestionsScreen from './Diary/Questions';
+import DiaryEntryScreen from './Diary/DiaryEntry';
+import EditScreen from './Diary/Edit';
+
 import GraphScreen from './Graph/graphScreen';
+
 import SettingsScreen from './Settings/settingsScreen';
+
 import SplashScreen from './splashscreen';
 import SignInScreen from './Login/LoginScreen';
 import SignUpScreen from './Login/SignUpScreen';
@@ -47,6 +54,19 @@ let HomeStackScreen = () => {
   );
 }
 
+const DiaryStack = createStackNavigator();
+let DiaryStackScreen = () => {
+  return (
+    <DiaryStack.Navigator initialRouteName="Calendar">
+      <DiaryStack.Screen name="Calendar" component={CalendarScreen} />
+      <DiaryStack.Screen name="Submit" component={SubmitScreen} />
+      <DiaryStack.Screen name="Questions" component={QuestionsScreen} />
+      <DiaryStack.Screen name="Diary Entry" component={DiaryEntryScreen} />
+      <DiaryStack.Screen name="Edit" component={EditScreen} />
+    </DiaryStack.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 let TabNavigationScreens = () => {
   return (
@@ -77,7 +97,7 @@ let TabNavigationScreens = () => {
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
-      <Tab.Screen name="Diary" component={DiaryScreen} />
+      <Tab.Screen name="Diary" component={DiaryStackScreen} />
       <Tab.Screen name="Graph" component={GraphScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
