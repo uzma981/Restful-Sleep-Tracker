@@ -25,9 +25,10 @@ export default function Clock({ navigation }) {
 
 const styles = StyleSheet.create({
   clockContainer: {
-    borderWidth: 1,
     marginTop: 50,
-    borderColor: 'orange'
+    borderColor: 'orange',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   timeText: {
     color: '#999999',
