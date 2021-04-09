@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image, TextInput, Button} from 'react-native';
 import SelectMultiple from 'react-native-select-multiple'
+import {LinearGradient} from 'expo-linear-gradient';
 
 let options = ['Caffeine', 'Exercise', 'Shower']
 
@@ -14,27 +15,29 @@ export default function ActivityScreen() {
 
   return (
     <View style={styles.container}>
-      <View>
-        <SelectMultiple
-          items={options}
-          renderLabel={renderLabel}
-          selectedItems={selectedOptions}
-          onSelectionsChange={onSelectionsChange} />
-      </View>
-      <View>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
-        />
-      </View>
-      <View style={styles.button}>
-        <Button
-          onPress={() => console.log("hi")}
-          title="Submit"
-          color="#841584"
-        />
-      </View>
+      <LinearGradient colors={['#00008b', '#9370DB']} style={{flex:1}}>
+        <View>
+          <SelectMultiple
+            items={options}
+            renderLabel={renderLabel}
+            selectedItems={selectedOptions}
+            onSelectionsChange={onSelectionsChange} />
+        </View>
+        <View>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+          />
+        </View>
+        <View style={styles.button}>
+          <Button
+            onPress={() => console.log("hi")}
+            title="Submit"
+            color="#841584"
+          />
+        </View>
+      </LinearGradient>
     </View>
   );
 }

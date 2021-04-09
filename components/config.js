@@ -1,6 +1,30 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+class sleepObject {
+  bedTime;
+  sleepTime;
+  wakeUpTime;
+  outOfBedTime;
+
+  constructor(startTime, stopTime) {
+    this.startTime = start;
+    this.stopTime = end;
+  }
+
+  // store the time as moment.js variables
+  getBedTime() { return this.bedTime; }
+  getSleepTime() { return this.sleepTime; }
+  getWakeUpTime() { return this.wakeUpTime; }
+  getOutOfBedTime() { return this.outOfBedTime; }
+  setBedTime(bedTime) { this.bedTime = bedTime; }
+  setSleepTime(sleepTime) { this.sleepTime = sleepTime; }
+  setWakeUpTime(wakeUpTime) { this.wakeUpTime wakeUpTime; }
+  setOutOfBedTime(outOfBedTime) { this.outOfBedTime = outOfBedTime; }
+}
+
+sleepObjectArray = [];
+
 global.sleeping = false;
 
 export const CircleButton = props => (

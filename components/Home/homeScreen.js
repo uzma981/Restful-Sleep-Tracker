@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
 
 import Clock from "./clock";
 import { CircleButton, globalStyles } from '../config';
@@ -8,32 +9,34 @@ import '../config';
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={globalStyles.clock}>
-        <TouchableOpacity
-          onPress={() => navigation.push("Alarm")}>
-          <Clock />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.buttons}>
-        <View style={styles.activityButton}>
-          <Button
-            onPress={() => navigation.push("Activity")}
-            title="Activities"
-            color="#841584"
-          />
+      <LinearGradient colors={['#003049', '#9370DB']} style={{flex:1}}>
+        <View style={globalStyles.clock}>
+          <TouchableOpacity
+            onPress={() => navigation.push("Alarm")}>
+            <Clock />
+          </TouchableOpacity>
         </View>
 
-        <CircleButton
-          text="Start Sleep"
-          size={150}
-          color="#7986cb"
-          textColor="white"
-          fontSize={20}
-          margin={10}
-          onPress={() => enterSleep({ navigation })}
-        />
-      </View>
+        <View style={styles.buttons}>
+          <View style={styles.activityButton}>
+            <Button
+              onPress={() => navigation.push("Activity")}
+              title="Activities"
+              color="#841584"
+            />
+          </View>
+
+          <CircleButton
+            text="Start Sleep"
+            size={150}
+            color="#7986cb"
+            textColor="white"
+            fontSize={20}
+            margin={10}
+            onPress={() => enterSleep({ navigation })}
+          />
+        </View>
+      </LinearGradient>
     </View>
   );
 }

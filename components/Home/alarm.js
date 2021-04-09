@@ -1,6 +1,7 @@
 import React, {useState} from 'react';  
 import {StyleSheet, Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
 import ReactNativeAN from 'react-native-alarm-notification';
+import {LinearGradient} from 'expo-linear-gradient';
 
 import { CircleButton } from '../config';
 
@@ -20,53 +21,53 @@ export default function AlarmScreen({navigation}) {
 
   return (  
     <View style={styles.container}>
-      <Text style={styles.title}>
-        Select Sleep time
-      </Text>
-      <View style={styles.sleepTime}>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeStartHour}
-          value={startHour}
-          placeholder="hour"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeStartMinute}
-          value={startMinute}
-          placeholder="minute"
-          keyboardType="numeric"
-        />
-      </View>
-      <Text style={styles.title}>
-        Select Wake Up time
-      </Text>
-      <View style={styles.sleepTime}>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeEndHour}
-          value={endHour}
-          placeholder="hour"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeEndMinute}
-          value={endMinute}
-          placeholder="minute"
-          keyboardType="numeric"
-        />
-      </View>
+        <Text style={styles.title}>
+          Select Sleep time
+        </Text>
+        <View style={styles.sleepTime}>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeStartHour}
+            value={startHour}
+            placeholder="hour"
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeStartMinute}
+            value={startMinute}
+            placeholder="minute"
+            keyboardType="numeric"
+          />
+        </View>
+        <Text style={styles.title}>
+          Select Wake Up time
+        </Text>
+        <View style={styles.sleepTime}>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEndHour}
+            value={endHour}
+            placeholder="hour"
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEndMinute}
+            value={endMinute}
+            placeholder="minute"
+            keyboardType="numeric"
+          />
+        </View>
 
-      <CircleButton
-        text="Set"
-        size={150}
-        color="#7986cb"
-        textColor="white"
-        fontSize={20}
-        margin={50}
-        onPress={() => submitChanges({navigation})}
+        <CircleButton
+          text="Set"
+          size={150}
+          color="#7986cb"
+          textColor="white"
+          fontSize={20}
+          margin={50}
+          onPress={() => submitChanges({navigation})}
       />
     </View>
   );  
@@ -79,7 +80,6 @@ let submitChanges = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     alignItems: 'center',
   },
   title: {
