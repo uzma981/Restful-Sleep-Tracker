@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     borderColor: 'orange',
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems:'center'
   },
   timeText: {
     color: '#999999',

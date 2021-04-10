@@ -7,7 +7,7 @@ import { addToArray } from './diaryConfig';
 export default function Submit({ navigation }) {
   addToArray({})
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor: '#003049' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor: '#9370DB' }}>
       <Text style={styles.text}>Good job! You successfully submited your diary entry!</Text>
       <Button
         title="Ok"

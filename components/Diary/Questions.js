@@ -93,7 +93,7 @@ export default function Questions({ navigation }) {
     return (
       <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#003049' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#9370DB' }}>
             <View style ={styles.column}>
               <Text style={styles.text}>1. What time did you go to bed?  , {answers.length} </Text>  
               <View>

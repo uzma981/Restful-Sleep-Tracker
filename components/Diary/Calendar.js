@@ -8,7 +8,7 @@ import './diaryConfig';
 export default function CalendarScreen({ navigation }) {
   var temp = '2021-04-03';
   const mark = {
-    [global.pickedDate]:{marked: true, dotColor: '#50cebb'}
+    [global.pickedDate]:{marked: true, dotColor: '#9370DB'}
   };
 
   const selectedDay = (date) =>{
@@ -32,18 +32,19 @@ export default function CalendarScreen({ navigation }) {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor: '#003049'}}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor: '#9370DB'}}>
       <Text style={styles.text}>Pick a date!</Text>
       <Calendar
        onDayPress={({dateString}) => {selectedDay(dateString.toString())}}
        enableSwipeMonths={true}
        markedDates={
-         {[global.pickedDate]: {marked: true, dotColor: '#50cebb'}},
-         {[temp]: {marked: true, dotColor: '#50cebb'}},
-         {[global.allDates.values()]: {marked: true, dotColor: '#50cebb'}},
-         {temp, pickedDate: {marked: true, dotColor: '#50cebb'}}
+         {[global.pickedDate]: {marked: true, dotColor: '#9370DB'}},
+         {[temp]: {marked: true, dotColor: '#9370DB'}},
+         {[global.allDates.values()]: {marked: true, dotColor: '#9370DB'}},
+         {temp, pickedDate: {marked: true, dotColor: '#9370DB'}}
        }
       />
     </View>
   );
 }
+

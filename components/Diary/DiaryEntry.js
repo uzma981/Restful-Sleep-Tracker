@@ -10,7 +10,7 @@ import './diaryConfig';
 export default function DiaryEntry({ navigation }) {
   info = getAnswers(pickedDate, info);
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor: '#003049'}}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor: '#9370DB'}}>
       <Text style={styles.text}>Your diary entry for {pickedDate} !, {answers.length}</Text>
 
       <View style ={styles.column}>
