@@ -93,7 +93,7 @@ let TabNavigationScreens = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: '#9370DB',
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen name="Home" component={HomeStackScreen} />

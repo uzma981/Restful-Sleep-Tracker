@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Button} from 'react-native';
+import {Text, View, Button, LinearGradient} from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 
 import { styles } from './diaryConfig';
@@ -33,6 +33,7 @@ export default function CalendarScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,backgroundColor: '#9370DB'}}>
+    
       <Text style={styles.text}>Pick a date!</Text>
       <Calendar
        onDayPress={({dateString}) => {selectedDay(dateString.toString())}}
