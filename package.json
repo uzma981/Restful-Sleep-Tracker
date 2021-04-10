@@ -15,7 +15,11 @@
     "@react-navigation/drawer": "^5.12.4",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
+<<<<<<< HEAD
     "expo": "^40.0.1",
+=======
+    "expo": "~40.0.0",
+>>>>>>> 55dd1a4f59c07d39ff7c9e421e6afb9d7231a494
     "expo-linear-gradient": "~8.4.0",
     "expo-status-bar": "~1.0.3",
     "moment": "^2.29.1",
