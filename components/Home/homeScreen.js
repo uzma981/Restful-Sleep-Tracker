@@ -15,7 +15,6 @@ export default function HomeScreen({ navigation }) {
             onPress={() => navigation.push("Alarm")}>
             <Clock />
           </TouchableOpacity>
-<<<<<<< HEAD
         </View>
 
         
@@ -43,29 +42,6 @@ export default function HomeScreen({ navigation }) {
             onPress={() => enterSleep({ navigation })}
           />
         </View>
-=======
-        </View>
-
-        <View style={styles.buttons}>
-          <View style={styles.activityButton}>
-            <Button
-              onPress={() => navigation.push("Activity")}
-              title="Activities"
-              color="#841584"
-            />
-          </View>
-
-          <CircleButton
-            text="Start Sleep"
-            size={150}
-            color="#7986cb"
-            textColor="white"
-            fontSize={20}
-            margin={10}
-            onPress={() => enterSleep({ navigation })}
-          />
-        </View>
->>>>>>> 55dd1a4f59c07d39ff7c9e421e6afb9d7231a494
       </LinearGradient>
     </View>
   );
