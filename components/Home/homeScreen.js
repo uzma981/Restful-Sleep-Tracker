@@ -17,14 +17,20 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         </View>
 
+        
+        <TouchableOpacity onPress={() => navigation.navigate('Activity')}>
+         <LinearGradient
+          colors={['#9370DB', '#BB8FCE']}
+          style={styles.signIn}
+         >
+          <Text style={styles.textSign}>Activities</Text>
+          
+        </LinearGradient> 
+      </TouchableOpacity>
+
+
+
         <View style={styles.buttons}>
-          <View style={styles.activityButton}>
-            <Button
-              onPress={() => navigation.push("Activity")}
-              title="Activities"
-              color="#841584"
-            />
-          </View>
 
           <CircleButton
             text="Start Sleep"
@@ -55,12 +61,31 @@ const styles = StyleSheet.create({
   buttons: {
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    
   },
   activityButton: {
     padding: 10,
     padding: 20,
+    
     marginBottom: 20
   },
+  signIn: {  
+     flexDirection: 'column',
+     marginHorizontal:120,
+    width: 150,
+    height: 40,
+    justifyContent: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+    alignItems: 'center',
+    borderRadius: 50,
+ 
+},
+textSign: {
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize:20
+}
 });
 
