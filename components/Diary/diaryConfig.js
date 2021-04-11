@@ -14,7 +14,7 @@ global.pickedDate;
 export function testt(){
   for (let index = 0; index < global.allDates.length; index++) {
     const mark = {
-      [global.allDates]:{marked: true, dotColor: '#50cebb'}
+      [global.allDates]:{marked: true, dotColor: '#9370DB'}
 
     };
   }

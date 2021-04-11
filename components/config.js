@@ -1,7 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-class sleepObject {
+class sleepObjectArray {
+
+
+
   bedTime;
   sleepTime;
   wakeUpTime;
@@ -19,7 +22,15 @@ class sleepObject {
   getOutOfBedTime() { return this.outOfBedTime; }
   setBedTime(bedTime) { this.bedTime = bedTime; }
   setSleepTime(sleepTime) { this.sleepTime = sleepTime; }
+<<<<<<< HEAD
   setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
+=======
+
+  setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
+
+  setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
+
+>>>>>>> 4f55ceeb76f04f016cee1c818cab50b4255375e0
   setOutOfBedTime(outOfBedTime) { this.outOfBedTime = outOfBedTime; }
 }
 

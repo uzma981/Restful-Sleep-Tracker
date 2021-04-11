@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, Button, SafeAreaView, ScrollView} from 'react-native';
+import {Text, View, Button, SafeAreaView, ScrollView,LinearGradient} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { styles } from './diaryConfig';
@@ -93,7 +93,7 @@ export default function Questions({ navigation }) {
     return (
       <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#003049' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#9370DB' }}>
             <View style ={styles.column}>
               <Text style={styles.text}>1. What time did you go to bed?  , {answers.length} </Text>  
               <View>
@@ -117,9 +117,11 @@ export default function Questions({ navigation }) {
               <Text style={styles.text}>2. When did you fall asleep? </Text>  
               
               <View>
+            
                 <Button 
                 onPress={showTimepicker2} title="Pick a time" 
                 />
+           
               </View>
               {show2 && (
                 <DateTimePicker

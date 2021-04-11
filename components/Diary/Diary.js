@@ -13,5 +13,6 @@ import Calendar from './Calendar';
 
 export default function Diary() {
   return (
+    <Calendar></Calendar>
   );
 }

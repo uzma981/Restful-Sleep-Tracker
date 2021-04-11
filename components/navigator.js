@@ -22,7 +22,7 @@ import GraphScreen from './Graph/graphScreen';
 import SettingsScreen from './Settings/settingsScreen';
 
 import SplashScreen from './splashscreen';
-import SignInScreen from './Login/LoginScreen';
+import SignInScreen from './Login/loginScreen';
 import SignUpScreen from './Login/SignUpScreen';
 import ForgotPasswordScreen from './Login/ForgotPasswordScreen';
 
@@ -93,7 +93,7 @@ let TabNavigationScreens = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: '#9370DB',
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
