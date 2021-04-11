@@ -16,8 +16,7 @@ export default function Submit({ navigation }) {
             index: 0,
             routes: [
               {
-                name: 'Calendar Screen',
-                params: { someParam: 'Param1' },
+                name: 'Calendar',
               },
             ],
           })

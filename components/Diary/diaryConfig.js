@@ -20,6 +20,15 @@ export function testt(){
   }
 }
 
+export function validate24(question2, question4){
+  var regex = /^\d\.[0-5][0-9]$/;
+  //question2 = question2.toString();
+  //if(regex.test(question2)){
+
+  //}
+  return regex.test(question2) && regex.test(question4);
+}
+
 export function saveNewInfo(answer, navigation){
   for(var j = 0; j < global.answers.length; j++){
     if(global.answers[j] == pickedDate){
@@ -32,7 +41,7 @@ export function saveNewInfo(answer, navigation){
       index: 0,
       routes: [
         {
-          name: 'Calendar Screen',
+          name: 'Calendar',
         },
       ],
     });
@@ -53,7 +62,7 @@ export function deleteEntry(date, navigation){//2/04/2021
       }
   }
   alert("Deleted Successfully!");
-  navigation.push('Calendar Screen');
+  navigation.push('Calendar');
 }
 
 export function getAnswers(date, info){

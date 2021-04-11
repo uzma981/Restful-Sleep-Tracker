@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { Text, Button, View } from 'react-native';
-
+import { Text, Button, View, SafeAreaView, ScrollView, TextInput } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { styles } from './diaryConfig';
 import { saveNewInfo } from './diaryConfig';
 import './diaryConfig';
@@ -87,12 +87,14 @@ export default function Edit({route, navigation }) {
     showMode4('time');
   };
   //forth question
+  const [number1, onChangeNumber1] = React.useState(null);
+  const [number2, onChangeNumber2] = React.useState(null);
     return (
       <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#003049' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#9370DB' }}>
             <View style ={styles.column}>
-              <Text style={styles.text}>1. What time did you go to bed?  , {answers.length}, {info[0]} </Text>
+              <Text style={styles.text}>1. What time did you go to bed?</Text>
               <View>
                 <Button
                 onPress={showTimepicker} title="Pick a time" />
@@ -108,29 +110,41 @@ export default function Edit({route, navigation }) {
                 />
               )}
                  <Text style={styles.text}>Old time: {info[0]}</Text>
-                 <Text style={styles.text}>New time: {question1 = date01.getHours() + ":" + date01.getMinutes()}</Text>
+                 <Text style={styles.text}>New time: {global.question1 = ("0" + date01.getHours()).slice(-2)  + ":" + ("0" + date01.getMinutes()).slice(-2)}</Text>
             </View>
             <View style ={styles.column}>
-              <Text style={styles.text}>2. When did you fall asleep? </Text>
-
-              <View>
-                <Button
-                onPress={showTimepicker2} title="Pick a time"
-                />
-              </View>
-              {show2 && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date2}
-                  mode={mode2}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChange2}
-                />
-              )}    
-                <Text style={styles.text}>Old time: {info[1]}</Text>  
-                 <Text style={styles.text}>New time: {question2 = date2.getHours() + ":" + date2.getMinutes()}</Text>    
+            <Text style={styles.text}>2. How long did it take you to fall asleep? </Text>  
+            <SafeAreaView>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeNumber1}
+                value={number1}
+                placeholder="Ex.: 1.05"
+                placeholderTextColor='grey'
+                textAlign={'center'}
+                keyboardType="numeric"
+              />
+            </SafeAreaView>
+           {/* <View>
+              <Button 
+              onPress={showTimepicker2} title="Pick a time" 
+              />
             </View>
+            {show2 && (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={date2}
+                mode={mode2}
+                is24Hour={true}
+                display="default"
+                onChange={onChange2}
+               // question2 ={date2}               
+              />
+            )}    
+            */}
+             <Text style={styles.text}>Old time: {info[1]}</Text>  
+                 <Text style={styles.text}>New time: {global.question2 = number1}</Text>    
+          </View>
             <View style ={styles.column}>
               <Text style={styles.text}>3. At what time did you wake up? </Text>  
               
@@ -149,32 +163,52 @@ export default function Edit({route, navigation }) {
                 />
               )}    
                 <Text style={styles.text}>Old time: {info[2]}</Text>  
-                 <Text style={styles.text}>New time: {question3 = date3.getHours() + ":" + date3.getMinutes()}</Text>     
+                 <Text style={styles.text}>New time: {global.question3 =  ("0" + date3.getHours()).slice(-2)  + ":" + ("0" + date3.getMinutes()).slice(-2)}</Text>     
             </View>
             <View style ={styles.column}>
-              <Text style={styles.text}>4. At what time did you get out of bed? </Text>  
-              
-              <View>
-                <Button
-                onPress={showTimepicker4} title="Pick a time" />
-              </View>
-              {show4 && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date4}
-                  mode={mode4}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChange4}          
-                />
-              )}    
-               <Text style={styles.text}>Old time: {info[3]}</Text>  
-                 <Text style={styles.text}>New time: {question4 = date4.getHours() + ":" + date4.getMinutes()}</Text>    
+            <Text style={styles.text}>4.How long did it take you to get out of bed? </Text>  
+            <SafeAreaView>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeNumber2}
+                value={number2}
+                placeholder="Ex.: 0.35"
+                placeholderTextColor='grey'
+                textAlign={'center'}
+                keyboardType="numeric"
+              />
+            </SafeAreaView>
+            {/*<View>
+              <Button
+              onPress={showTimepicker4} title="Pick a time" />
             </View>
-           <Text>{answer = question1 + "," + question2 + "," + question3 + "," + question4}</Text>
+            {show4 && (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={date4}
+                mode={mode4}
+                is24Hour={true}
+                display="default"
+                onChange={onChange4}
+                //question3 ={date}               
+              />
+            )}    
+*/}
+              <Text style={styles.text}>Old time: {info[3]}</Text>  
+                 <Text style={styles.text}>New time: {global.question4 = number2}</Text>    
+          </View>
+
+           <Text>{global.answer = global.question1 + "," + global.question2 + "," + global.question3 + "," + global.question4}</Text>
         <Button 
           title="Save"
-          onPress={() => saveNewInfo(answer, navigation)}
+          onPress={() => 
+           // {
+            //if (!validate24(global.question2,global.question4)) {
+             // alert("Put valid time! (x.xx)");
+            //} else {
+              saveNewInfo(answer, navigation)
+            //}
+          }//}
         />    
          <Button
         title="Cancel"
@@ -182,7 +216,7 @@ export default function Edit({route, navigation }) {
           index: 0,
           routes: [
             {
-              name: 'Calendar Screen',
+              name: 'Calendar',
             },
           ],
         })}
