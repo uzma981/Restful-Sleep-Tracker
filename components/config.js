@@ -19,11 +19,11 @@ class sleepObject {
   getOutOfBedTime() { return this.outOfBedTime; }
   setBedTime(bedTime) { this.bedTime = bedTime; }
   setSleepTime(sleepTime) { this.sleepTime = sleepTime; }
-  setWakeUpTime(wakeUpTime) { this.wakeUpTime wakeUpTime; }
+  setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
   setOutOfBedTime(outOfBedTime) { this.outOfBedTime = outOfBedTime; }
 }
 
-sleepObjectArray = [];
+var sleepObjects = new Object();
 
 global.sleeping = false;
 
