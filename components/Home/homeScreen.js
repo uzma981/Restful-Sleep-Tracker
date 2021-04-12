@@ -5,6 +5,8 @@ import {LinearGradient} from 'expo-linear-gradient';
 import Clock from "./clock";
 import { CircleButton, globalStyles } from '../config';
 import '../config';
+import SleepObject from '../config';
+import './homeConfig';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -48,6 +50,8 @@ export default function HomeScreen({ navigation }) {
 }
 
 const enterSleep = ({navigation}) => {
+  let start = new Date();
+  global.start = start.getDate() + "/" + (start.getMonth()+1) + "/" + start.getFullYear();
   navigation.navigate('Sleep');
   global.sleeping = true;
 };

@@ -1,18 +1,15 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-class sleepObjectArray {
-
-
-
+export class SleepObject {
   bedTime;
   sleepTime;
   wakeUpTime;
   outOfBedTime;
 
-  constructor(startTime, stopTime) {
-    this.startTime = start;
-    this.stopTime = end;
+  constructor(startDate, stopDate) {
+    this.startDate = startDate;
+    this.stopDate = stopDate;
   }
 
   // store the time as moment.js variables
@@ -22,21 +19,11 @@ class sleepObjectArray {
   getOutOfBedTime() { return this.outOfBedTime; }
   setBedTime(bedTime) { this.bedTime = bedTime; }
   setSleepTime(sleepTime) { this.sleepTime = sleepTime; }
-<<<<<<< HEAD
   setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
-=======
-
-  setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
-
-  setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
-
->>>>>>> 4f55ceeb76f04f016cee1c818cab50b4255375e0
   setOutOfBedTime(outOfBedTime) { this.outOfBedTime = outOfBedTime; }
 }
 
-var sleepObjects = new Object();
-
-global.sleeping = false;
+global.sleepObjects = new Object();
 
 export const CircleButton = props => (
   <TouchableOpacity

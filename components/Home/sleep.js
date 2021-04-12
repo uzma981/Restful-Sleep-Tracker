@@ -5,6 +5,8 @@ import {LinearGradient} from 'expo-linear-gradient';
 import Clock from "./clock";
 import { CircleButton, globalStyles } from '../config';
 import "../config";
+import SleepObject from '../config';
+import "./homeConfig";
 
 export default function SleepScreen({ navigation }) {
   useEffect(() => {
@@ -39,9 +41,17 @@ export default function SleepScreen({ navigation }) {
 }
 
 const leaveSleep = ({navigation}) => {
-  navigation.goBack();
+  let stop = new Date();
+  global.stop = stop.getDate() + "/" + (stop.getMonth()+1) + "/" + stop.getFullYear();
+  submitSleepData();
   global.sleeping = false;
+  navigation.goBack();
 };
+
+const submitSleepData = () => {
+  let sleepObject = new SleepObject(global.start, global.stop);
+  global.sleepObjects[global.start] = sleepObject;
+}
 
 const styles = StyleSheet.create({  
   container: {  
