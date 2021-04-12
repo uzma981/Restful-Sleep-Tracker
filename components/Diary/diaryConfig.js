@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 global.question1;
 global.question2;
@@ -11,64 +11,51 @@ global.allDates = new Array(); //filled with only dates
 global.info;
 global.pickedDate;
 
-export function testt(){
-  for (let index = 0; index < global.allDates.length; index++) {
-    const mark = {
-      [global.allDates]:{marked: true, dotColor: '#9370DB'}
-
-    };
-  }
-}
-
-export function validate24(question2, question4){
+export function validate24(question2, question4) {
   var regex = /^\d\.[0-5][0-9]$/;
-  //question2 = question2.toString();
-  //if(regex.test(question2)){
-
-  //}
   return regex.test(question2) && regex.test(question4);
 }
 
-export function saveNewInfo(answer, navigation){
-  for(var j = 0; j < global.answers.length; j++){
-    if(global.answers[j] == pickedDate){
-      global.answers.splice(j+1, 1, answer);// find the date and replace the answer with new info
+export function saveNewInfo(answer, navigation) {
+  for (var j = 0; j < global.answers.length; j++) {
+    if (global.answers[j] == pickedDate) {
+      global.answers.splice(j + 1, 1, answer);// find the date and replace the answer with new info
       break;
     }
   }
-    alert('Updated Successfuly!');
-   navigation.reset({
-      index: 0,
-      routes: [
-        {
-          name: 'Calendar',
-        },
-      ],
-    });
+  alert('Updated Successfuly!');
+  navigation.reset({
+    index: 0,
+    routes: [
+      {
+        name: 'Calendar',
+      },
+    ],
+  });
 }
 
-export function deleteEntry(date, navigation){//2/04/2021
-  for(var j = 0; j < global.answers.length; j++){ //1/04/2021, answer, 2/04/2021, answer = 4
-    if(global.answers[j] == date){
+export function deleteEntry(date, navigation) {//2/04/2021
+  for (var j = 0; j < global.answers.length; j++) { //1/04/2021, answer, 2/04/2021, answer = 4
+    if (global.answers[j] == date) {
       global.answers.splice(j, 1);// this removes the date from array and array length becomes 1 less
       global.answers.splice(j, 1);// answer moves one index back, instead of date in the same index, answer goes, this removes the answer
       break;
     }
   }
-    for(var j = 0; j < global.allDates.length; j++){
-      if(global.allDates[j] == date){
-        global.allDates.splice(j, 1);
-        break;
-      }
+  for (var j = 0; j < global.allDates.length; j++) {
+    if (global.allDates[j] == date) {
+      global.allDates.splice(j, 1);
+      break;
+    }
   }
   alert("Deleted Successfully!");
   navigation.push('Calendar');
 }
 
-export function getAnswers(date, info){
-  for(var i = 0; i < global.answers.length; i++){
-    if(global.answers[i] == date){
-      info = global.answers[i+1];
+export function getAnswers(date, info) {
+  for (var i = 0; i < global.answers.length; i++) {
+    if (global.answers[i] == date) {
+      info = global.answers[i + 1];
       break;
     }
   }
@@ -76,7 +63,7 @@ export function getAnswers(date, info){
 }
 
 export function addToArray() {
-  if(pickedDate != null && answer != null){
+  if (pickedDate != null && answer != null) {
     answers.push(pickedDate);
     answers.push(answer);
 
@@ -91,11 +78,11 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     //paddingTop: StatusBar.currentHeight,
   },
- // scrollView: {
-   // backgroundColor: 'pink',
-    //marginHorizontal: 20,
+  // scrollView: {
+  // backgroundColor: 'pink',
+  //marginHorizontal: 20,
   //},
-  row:{
+  row: {
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
@@ -130,6 +117,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
     //textAlign: "center",
-   // backgroundColor: "#000000a0"
+    // backgroundColor: "#000000a0"
   },
 });
