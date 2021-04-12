@@ -78,10 +78,10 @@ const SignInScreen =({navigation}) => {
                   }} />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
-          </View >
+          </View>
     );
   };
 
@@ -98,12 +98,12 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:35,
     color:"black",
-    marginTop:200,
-    marginBottom:40
+    marginTop:100,
+    marginBottom:30
   },
   inputView:{
     width:"80%",
-    backgroundColor:"#9370DB",
+    backgroundColor:"#2D187E",
     borderRadius:25,
     height:50,
     marginBottom:20,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   loginBtn:{
     width:"40%",
-    backgroundColor:"#9370DB",
+    backgroundColor:"#2D187E",
     borderRadius:25,
     height:40,
     alignItems:"center",
@@ -143,6 +143,6 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     left: 140,
-    top: 20,
+    margin: 5,
   }
 });

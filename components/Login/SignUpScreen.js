@@ -121,7 +121,7 @@ return (
                 </View>
               </TouchableOpacity>
             
-    <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')}>
+    <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}>
   <Text style={styles.signupText}>Already have an account? Sign In</Text>
 </TouchableOpacity>
 </View>

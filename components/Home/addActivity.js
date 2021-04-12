@@ -23,7 +23,7 @@ return (
         onChangeText={changeHandler} 
        // value={text} 
       />
-      <Button onPress={() =>submitHandler(text)} title='Submit' color='#9370DB'/>
+      <Button onPress={() =>submitHandler(text)} title='Submit' color='#2D187E'/>
     </View>
   )
   }

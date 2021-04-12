@@ -48,7 +48,7 @@ class CalendarClass extends Component { // need a class in order to use states f
       }
     }
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#9370DB' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2D187E' }}>
 
         <Calendar
           onDayPress={({ dateString }) => { selectedDay(dateString.toString()) }}
