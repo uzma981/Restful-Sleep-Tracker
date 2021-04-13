@@ -11,7 +11,7 @@ export default function DiaryEntry({ navigation }) {
   global.info = getAnswers(pickedDate, global.info);
   return (
     <ScrollView style={styles.scrollView}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#9370DB' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2D187E' }}>
         <Text style={styles.text}>Your diary entry for {pickedDate} !</Text>
 
         <View style={styles.column}>
@@ -23,7 +23,7 @@ export default function DiaryEntry({ navigation }) {
           <Text style={styles.text}>{global.info[1]} </Text>
         </View>
         <View style={styles.column}>
-          <Text style={styles.text}>3. At what time did you wake up?</Text>
+          <Text style={styles.text}>3. What time did you wake up?</Text>
           <Text style={styles.text}>{global.info[2]} </Text>
         </View>
         <View style={styles.column}>

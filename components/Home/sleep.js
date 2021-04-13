@@ -17,7 +17,7 @@ export default function SleepScreen({ navigation }) {
 
   return (  
     <View style={styles.container}>       
-      <LinearGradient colors={['#003049', '#9370DB']} style={{flex:1}}>
+      <LinearGradient colors={['#2d187e','#003049']} style={{flex:1}}>
         <View style={globalStyles.clock}>
           <TouchableOpacity
             onPress={() => navigation.navigate("Alarm")}>

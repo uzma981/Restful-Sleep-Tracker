@@ -79,11 +79,50 @@ export default function SignInScreen({navigation}){
         <TouchableOpacity onPress={onLoginPressed} style={styles.loginBtn}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
+<<<<<<< HEAD
         
             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
+=======
+        <Text
+              onPress={() => console.log('g')}
+              style={{
+                position: 'relative',
+                top: '1%',
+                fontWeight: 'bold',
+                fontSize: 12
+              }} >
+              OR LOGIN WITH SOCIAL MEDIA ACCOUNT?
+          </Text>
+            <View style={{
+              flex: 1,
+              flexDirection: 'row',
+              bottom: 30,
+              justifyContent: 'space-evenly',
+              top: '10%',
+              width: 200
+            }} >
+              <TouchableOpacity activeOpacity={0.5} >
+                <Image source={
+                  { uri: 'https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/facebook-512.png' }}
+                  style={{
+                    width: 40,
+                    height: 40,
+                  }} />
+              </TouchableOpacity>
+              <TouchableOpacity activeOpacity={0.5} >
+                <Image source={
+                  { uri: 'https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA' }}
+                  style={{
+                    width: 40,
+                    height: 40,
+                  }} />
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity onPress={()=>navigation.navigate('')}>
+>>>>>>> e81c431e899bc02bfd783e009519181aa53384ed
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
-          </View >
+          </View>
     );
   };
 
@@ -101,12 +140,12 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:35,
     color:"black",
-    marginTop:200,
-    marginBottom:40
+    marginTop:100,
+    marginBottom:30
   },
   inputView:{
     width:"80%",
-    backgroundColor:"#9370DB",
+    backgroundColor:"#2D187E",
     borderRadius:25,
     height:50,
     marginBottom:20,
@@ -128,7 +167,7 @@ const styles = StyleSheet.create({
   },
   loginBtn:{
     width:"40%",
-    backgroundColor:"#9370DB",
+    backgroundColor:"#2D187E",
     borderRadius:25,
     height:40,
     alignItems:"center",
@@ -146,6 +185,6 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     left: 140,
-    top: 20,
+    margin: 5,
   }
 });

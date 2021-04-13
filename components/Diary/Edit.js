@@ -92,7 +92,7 @@ export default function Edit({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#9370DB' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2D187E' }}>
           <View style={styles.column}>
             <Text style={styles.text}>1. What time did you go to bed?</Text>
             <View>
@@ -119,7 +119,7 @@ export default function Edit({ route, navigation }) {
                 style={styles.input}
                 onChangeText={onChangeNumber1}
                 value={number1}
-                placeholder="Ex.: 1.05"
+                placeholder="e.g.: 1.05"
                 placeholderTextColor='grey'
                 textAlign={'center'}
                 keyboardType="numeric"
@@ -146,7 +146,7 @@ export default function Edit({ route, navigation }) {
             <Text style={styles.text}>New time: {global.question2 = number1}</Text>
           </View>
           <View style={styles.column}>
-            <Text style={styles.text}>3. At what time did you wake up? </Text>
+            <Text style={styles.text}>3. What time did you wake up? </Text>
 
             <View>
               <Button

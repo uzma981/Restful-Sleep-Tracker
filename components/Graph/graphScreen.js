@@ -1,13 +1,18 @@
 import * as React from 'react';
 import {View, Text , Image, StyleSheet, TouchableOpacity,Linking} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+
+
+
+
+
 function GraphScreen({ navigation }) {
 
-    return (
-     <View style={styles.container}>
 
-{/* <Line data ={data} styles={styles.c}/> */}
-<Text style={styles.text}> 5 Tips for a Better Night's Sleep </Text>
+    return (
+
+     <View style={styles.container}>
+<Text style={styles.textHeader}> 5 Tips for a Better Night's Sleep </Text>
 
 <ScrollView horizontal
             showsHorizontalScrollIndicator={false}
@@ -77,7 +82,7 @@ function GraphScreen({ navigation }) {
   
   
     boxone:{
-      backgroundColor: "#9370DB",
+      backgroundColor: "#2D187E",
       height: 200,
       width: 190,
       borderRadius: 15,
@@ -93,7 +98,7 @@ function GraphScreen({ navigation }) {
     },
   
     text:{
-      color: "black",
+      color: "white",
       marginTop: 20,
       fontSize: 17,
       marginHorizontal: 10,
@@ -105,6 +110,12 @@ function GraphScreen({ navigation }) {
       height: 130 ,
       
     },
+    textHeader:{
+      color: "black",
+      marginTop: 20,
+      fontSize: 17,
+      marginHorizontal: 10,
+    }
     
     
 

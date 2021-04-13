@@ -11,7 +11,7 @@ import './homeConfig';
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <LinearGradient colors={['#003049', '#9370DB']} style={{flex:1}}>
+      <LinearGradient colors={['#2d187e','#003049']} style={{flex:1}}>
         <View style={globalStyles.clock}>
           <TouchableOpacity
             onPress={() => navigation.push("Alarm")}>
@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }) {
         
         <TouchableOpacity onPress={() => navigation.navigate('Activity')}>
          <LinearGradient
-          colors={['#9370DB', '#BB8FCE']}
+          colors={['#9370DB', '#2D187E']}
           style={styles.signIn}
          >
           <Text style={styles.textSign}>Activities</Text>
