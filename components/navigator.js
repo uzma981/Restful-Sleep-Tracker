@@ -22,7 +22,7 @@ import GraphScreen from './Graph/graphScreen';
 import SettingsScreen from './Settings/settingsScreen';
 
 import SplashScreen from './splashscreen';
-import SignInScreen from './Login/loginScreen';
+import SignInScreen from './Login/LoginScreen';
 import SignUpScreen from './Login/SignUpScreen';
 import ForgotPasswordScreen from './Login/ForgotPasswordScreen';
 

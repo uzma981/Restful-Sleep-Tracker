@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import * as users from '../../database/users.json';
 
-const SignInScreen =({navigation}) => {
+
+export default function SignInScreen({navigation}){
+  const [email, setEmail] = useState({ value: '', error: '' })
+  const [password, setPassword] = useState({ value: '', error: '' })
+
+  const onLoginPressed = () => {
+    if (email.value=="" || password.value=="") {
+      console.log("Please fill in all the required fields.") 
+    }
+    else {
+      if (!email.value.includes("@")){
+          console.log('The email address is not valid') 
+      }
+      else {
+        users.users.map((item)=> {
+          if (email.value==item.email && password.value==item.password){
+            navigation.navigate('Home'); //code to navigate to the main page
+          }
+        })
+      }
+    }
+  }
 
   return (
       <View style={styles.container}>
-        <View style={styles.skipButton}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}
+        <View style={styles.skipButton} >
+        <TouchableOpacity onPress={()=>navigation.navigate('Home')}
         style={[styles.signIn,{
-            marginTop: 50,
+            marginTop: -60,
             position: 'absolute'
         }]}>
         <Text style={[styles.textSign,
@@ -25,59 +47,39 @@ const SignInScreen =({navigation}) => {
             style={styles.inputText}
             placeholder="Email" 
             placeholderTextColor="white"
-            
+            returnKeyType="next"
+            value={email.value}
+            onChangeText={(text) => setEmail({ 
+            value: text, error: '' })}
+            error={!!email.error}
+            errorText={email.error}
+            autoCapitalize="none"
+            autoCompleteType="email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
             />
         </View>
         <View style={styles.inputView} >
-          <TextInput  
+          <TextInput 
             secureTextEntry
             style={styles.inputText}
             placeholder="Password" 
             placeholderTextColor="white"
             
+            returnKeyType="done"
+            value={password.value}
+            onChangeText={(text) => setPassword({ value: text, error: '' })}
+            error={!!password.error}
+            errorText={password.error}
             />
         </View>
         <TouchableOpacity onPress={()=>navigation.navigate('ForgotPassword')}>
           <Text style={styles.forgot}>Forgot Password?</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity onPress={onLoginPressed} style={styles.loginBtn}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
-        <Text
-              onPress={() => console.log('g')}
-              style={{
-                position: 'relative',
-                top: '1%',
-                fontWeight: 'bold',
-                fontSize: 12
-              }} >
-              OR LOGIN WITH SOCIAL MEDIA ACCOUNT?
-          </Text>
-            <View style={{
-              flex: 1,
-              flexDirection: 'row',
-              bottom: 30,
-              justifyContent: 'space-evenly',
-              top: '10%',
-              width: 200
-            }} >
-              <TouchableOpacity activeOpacity={0.5} >
-                <Image source={
-                  { uri: 'https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/facebook-512.png' }}
-                  style={{
-                    width: 40,
-                    height: 40,
-                  }} />
-              </TouchableOpacity>
-              <TouchableOpacity activeOpacity={0.5} >
-                <Image source={
-                  { uri: 'https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA' }}
-                  style={{
-                    width: 40,
-                    height: 40,
-                  }} />
-              </TouchableOpacity>
-            </View>
+        
             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
@@ -85,7 +87,8 @@ const SignInScreen =({navigation}) => {
     );
   };
 
-export default SignInScreen;
+
+
 
 const styles = StyleSheet.create({
   container: {
