@@ -1,90 +1,128 @@
-import React, {useState} from 'react';  
-import {StyleSheet, Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
-import ReactNativeAN from 'react-native-alarm-notification';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Alert} from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import {LinearGradient} from 'expo-linear-gradient';
 
 import { CircleButton } from '../config';
 
 export default function AlarmScreen({navigation}) {
-  /*
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const handleChange = (value: {hours: number, minutes: number}) => {
-    setHours(value.hours);
-    setMinutes(value.minutes);
+  const [dateStart, setDateStart] = useState(new Date(1598051730000));
+  const [dateEnd, setDateEnd] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('time');
+  const [show, setShow] = useState(false);
+
+  const onChangeStart = (event, selectedDate) => {
+    const currentDate = selectedDate || dateStart;
+    setShow(Platform.OS === 'ios');
+    setDateStart(currentDate);
   };
-  */
-  const [startHour, onChangeStartHour] = useState(null);
-  const [startMinute, onChangeStartMinute] = useState(null);
-  const [endHour, onChangeEndHour] = useState(null);
-  const [endMinute, onChangeEndMinute] = useState(null);
+
+  const onChangeEnd = (event, selectedDate) => {
+    const currentDate = selectedDate || dateEnd;
+    setShow(Platform.OS === 'ios');
+    setDateEnd(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
 
   return (  
     <View style={styles.container}>
+      <LinearGradient colors={['#2d187e','#003049']} style={styles.lGradient}>
         <Text style={styles.title}>
-          Select Sleep time
+          Sleep time: {dateStart.getHours().toString()} : {dateStart.getMinutes().toString()}
         </Text>
-        <View style={styles.sleepTime}>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeStartHour}
-            value={startHour}
-            placeholder="hour"
-            keyboardType="numeric"
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeStartMinute}
-            value={startMinute}
-            placeholder="minute"
-            keyboardType="numeric"
-          />
+        <View>
+          <Button onPress={showTimepicker} title="Select bedtime" />
         </View>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={dateStart}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onChangeStart}
+          />
+        )}
+
         <Text style={styles.title}>
-          Select Wake Up time
+          Wakeup time: {dateEnd.getHours().toString()} : {dateEnd.getMinutes().toString()}
         </Text>
-        <View style={styles.sleepTime}>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeEndHour}
-            value={endHour}
-            placeholder="hour"
-            keyboardType="numeric"
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeEndMinute}
-            value={endMinute}
-            placeholder="minute"
-            keyboardType="numeric"
-          />
+        <View>
+          <Button onPress={showTimepicker} title="Select Wakeup time" />
         </View>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker2"
+            value={dateEnd}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onChangeEnd}
+          />
+        )}
 
         <CircleButton
-          text="Set"
+          text="Submit"
           size={150}
           color="#7986cb"
           textColor="white"
           fontSize={20}
           margin={50}
-          onPress={() => submitChanges({navigation})}
+          onPress={() => submitChanges({navigation}, dateStart, dateEnd)}
       />
+     </LinearGradient>
     </View>
   );  
 }
 
-let submitChanges = ({navigation}) => {
+const showAlert = () =>
+  Alert.alert(
+    "Sleep Target",
+    "Successfully updated sleep target",
+    [
+      {
+        text: "Close",
+        style: "cancel",
+      },
+    ],
+    {
+      cancelable: true,
+    }
+  );
+
+let submitChanges = ({navigation}, start, end) => {
+  global.sleepTarget = start;
+  global.wakeUpTarget = end;
+  showAlert();
   navigation.goBack();
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
+  },
+  lGradient: {
+    flex: 1,
+    padding: 100
   },
   title: {
     textAlign: 'center',
     fontSize: 20,
+    color: 'white',
     fontWeight: 'bold',
     padding: 20,
   },
@@ -92,7 +130,6 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    padding: 10
   },
   sleepTime: {
     flexDirection: 'row'
