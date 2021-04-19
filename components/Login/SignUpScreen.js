@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import {Image, TextInput, View, Text, StyleSheet,TouchableOpacity, ImageBackground} from 'react-native';
+import {Image, TextInput, View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons';
 import * as users from '../../database/users.json';
 import * as FileSystem from 'expo-file-system';
+
 
 export default function SignUpScreen({navigation}){
 
@@ -26,7 +27,7 @@ export default function SignUpScreen({navigation}){
         users.users.map((item)=> {
           if (email.value==item.email){
               check=true;
-              navigation.navigate('Home'); //code to navigate to the main page
+            navigation.navigate('SignInScreen'); //code to navigate to the main page
           }
           if (check) {
               console.log("User already exist.")
@@ -57,29 +58,29 @@ export default function SignUpScreen({navigation}){
 
 
 return (
-    <View style={{backgroundColor:"#FFF",height:"100%"}}>
-        <Image source ={require('../images/logo2.png')}
-            style={{width: 150,
-                height: 150,
-                resizeMode: 'cover',
-                marginTop: 100,
-                alignSelf:"center"
-         }}
-    />
+
+            <View style={{backgroundColor:"#FFF",height:"100%"}}>
+                <Image source ={require('../images/logo2.png')}
+                    style={{width: 150,
+                        height: 150,
+                        resizeMode: 'cover',
+                        marginTop: 100,
+                        alignSelf:"center"
+                 }}
+                />
     
-    <View style={styles.backButton} >
-    <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} //i have to fix this
+                <View style={styles.backButton} >
+    <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')} //i have to fix this
     style={[styles.signIn,{
         marginTop: -180,
         left: 20,
         position: 'absolute'
     }]}>
     <Text style={[styles.textSign,
-        {
-            color:'black'
+            {
+                color:'black'
 
-        }]}> {'<'}Back
-    </Text>
+            }]}> {'<'}Back </Text>
         </TouchableOpacity>
         </View>
                 <Text
@@ -108,8 +109,6 @@ return (
                         placeholderTextColor="#9370DB"
                         fontSize="15"
                         style={{paddingHorizontal:10}}
-
-                        
                         returnKeyType="next"
                         value={email.value}
                         onChangeText={(text) => setEmail({ value: text, error: '' })}
@@ -151,53 +150,10 @@ return (
                     />
 
                 </View>
-<<<<<<< HEAD
                 <TouchableOpacity onPress={onRegisterPressed} style={styles.loginBtn}>
           <Text style={styles.registerText}>Register</Text>
         </TouchableOpacity>
     <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')}>
-=======
-                <View style={{
-                    flexDirection:"row",
-                    alignItems:"center",
-                    marginHorizontal:55,
-                    borderWidth:2,
-                    marginTop:15,
-                    paddingHorizontal:10,
-                    borderColor:"#9370DB",
-                    borderRadius:23,
-                    paddingVertical:10
-                }}>
-                   
-                   <TextInput 
-                        secureTextEntry
-                        placeholder="Confirm Password"
-                        placeholderTextColor="#9370DB"
-                        fontSize="15"
-                        style={{paddingHorizontal:10}}
-                    />
-                    
-
-                </View>
-                <TouchableOpacity>
-                <View style={{
-                    marginHorizontal:140,
-                    alignItems:"center",
-                    justifyContent:"center",
-                    marginTop:30,
-                    backgroundColor:"#9370DB",
-                    paddingVertical:10,
-                    borderRadius:23
-                }}>
-                    <Text style={{
-                        color:"white",
-                        fontSize:18
-                    }}>Register</Text>
-                </View>
-              </TouchableOpacity>
-            
-    <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}>
->>>>>>> e81c431e899bc02bfd783e009519181aa53384ed
   <Text style={styles.signupText}>Already have an account? Sign In</Text>
 </TouchableOpacity>
 </View>

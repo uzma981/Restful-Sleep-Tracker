@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import * as users from '../../database/users.json';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import image from '../images/image.jpg';
 
 
 export default function SignInScreen({navigation}){
@@ -19,7 +21,7 @@ export default function SignInScreen({navigation}){
       else {
         users.users.map((item)=> {
           if (email.value==item.email && password.value==item.password){
-            navigation.navigate('Home'); //code to navigate to the main page
+            navigation.navigate('SignUp'); //code to navigate to the main page
           }
         })
       }
@@ -27,9 +29,10 @@ export default function SignInScreen({navigation}){
   }
 
   return (
+    
       <View style={styles.container}>
         <View style={styles.skipButton} >
-        <TouchableOpacity onPress={()=>navigation.navigate('Home')}
+        <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}
         style={[styles.signIn,{
             marginTop: -60,
             position: 'absolute'
@@ -79,10 +82,6 @@ export default function SignInScreen({navigation}){
         <TouchableOpacity onPress={onLoginPressed} style={styles.loginBtn}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
-<<<<<<< HEAD
-        
-            <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
-=======
         <Text
               onPress={() => console.log('g')}
               style={{
@@ -118,14 +117,13 @@ export default function SignInScreen({navigation}){
                   }} />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=>navigation.navigate('')}>
->>>>>>> e81c431e899bc02bfd783e009519181aa53384ed
+        
+            <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
-          </View>
+          </View >
     );
   };
-
 
 
 
@@ -140,12 +138,12 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:35,
     color:"black",
-    marginTop:100,
-    marginBottom:30
+    marginTop:200,
+    marginBottom:40
   },
   inputView:{
     width:"80%",
-    backgroundColor:"#2D187E",
+    backgroundColor:"#9370DB",
     borderRadius:25,
     height:50,
     marginBottom:20,
@@ -167,7 +165,7 @@ const styles = StyleSheet.create({
   },
   loginBtn:{
     width:"40%",
-    backgroundColor:"#2D187E",
+    backgroundColor:"#9370DB",
     borderRadius:25,
     height:40,
     alignItems:"center",
@@ -185,6 +183,6 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     left: 140,
-    margin: 5,
-  }
+    top: 140,
+  },
 });
