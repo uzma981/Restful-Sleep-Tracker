@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import * as users from '../../database/users.json';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import image from '../images/image.jpg';
 
-import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-const SignInScreen =({navigation}) => {
+export default function SignInScreen({navigation}){
+  const [email, setEmail] = useState({ value: '', error: '' })
+  const [password, setPassword] = useState({ value: '', error: '' })
+
+  const onLoginPressed = () => {
+    if (email.value=="" || password.value=="") {
+      console.log("Please fill in all the required fields.") 
+    }
+    else {
+      if (!email.value.includes("@")){
+          console.log('The email address is not valid') 
+      }
+      else {
+        users.users.map((item)=> {
+          if (email.value==item.email && password.value==item.password){
+            navigation.navigate('SignUp'); //code to navigate to the main page
+          }
+        })
+      }
+    }
+  }
 
   return (
+    
       <View style={styles.container}>
-        <View style={styles.skipButton}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}
+        <View style={styles.skipButton} >
+        <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}
         style={[styles.signIn,{
-            marginTop: 50,
+            marginTop: -60,
             position: 'absolute'
         }]}>
         <Text style={[styles.textSign,
@@ -25,22 +50,36 @@ const SignInScreen =({navigation}) => {
             style={styles.inputText}
             placeholder="Email" 
             placeholderTextColor="white"
-            
+            returnKeyType="next"
+            value={email.value}
+            onChangeText={(text) => setEmail({ 
+            value: text, error: '' })}
+            error={!!email.error}
+            errorText={email.error}
+            autoCapitalize="none"
+            autoCompleteType="email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
             />
         </View>
         <View style={styles.inputView} >
-          <TextInput  
+          <TextInput 
             secureTextEntry
             style={styles.inputText}
             placeholder="Password" 
             placeholderTextColor="white"
             
+            returnKeyType="done"
+            value={password.value}
+            onChangeText={(text) => setPassword({ value: text, error: '' })}
+            error={!!password.error}
+            errorText={password.error}
             />
         </View>
         <TouchableOpacity onPress={()=>navigation.navigate('ForgotPassword')}>
           <Text style={styles.forgot}>Forgot Password?</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity onPress={onLoginPressed} style={styles.loginBtn}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <Text
@@ -78,14 +117,15 @@ const SignInScreen =({navigation}) => {
                   }} />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=>navigation.navigate('')}>
+        
+            <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
-          </View>
+          </View >
     );
   };
 
-export default SignInScreen;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -98,12 +138,12 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:35,
     color:"black",
-    marginTop:100,
-    marginBottom:30
+    marginTop:200,
+    marginBottom:40
   },
   inputView:{
     width:"80%",
-    backgroundColor:"#2D187E",
+    backgroundColor:"#9370DB",
     borderRadius:25,
     height:50,
     marginBottom:20,
@@ -125,7 +165,7 @@ const styles = StyleSheet.create({
   },
   loginBtn:{
     width:"40%",
-    backgroundColor:"#2D187E",
+    backgroundColor:"#9370DB",
     borderRadius:25,
     height:40,
     alignItems:"center",
@@ -143,6 +183,6 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     left: 140,
-    margin: 5,
-  }
+    top: 140,
+  },
 });
