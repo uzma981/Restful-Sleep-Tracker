@@ -32,7 +32,7 @@ export default function SignInScreen({navigation}){
     
       <View style={styles.container}>
         <View style={styles.skipButton} >
-        <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}
+        <TouchableOpacity onPress={()=>navigation.navigate('Home')}
         style={[styles.signIn,{
             marginTop: -60,
             position: 'absolute'
