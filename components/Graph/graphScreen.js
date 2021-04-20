@@ -7,12 +7,10 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 function GraphScreen({ navigation }) {
-
-
     return (
 
      <View style={styles.container}>
-<Text style={styles.textHeader}> 5 Tips for a Better Night's Sleep </Text>
+<Text style={styles.textHeader}> 5 Tips for a Better Night's Sleep{' >'} </Text>
 
 <ScrollView horizontal
             showsHorizontalScrollIndicator={false}
