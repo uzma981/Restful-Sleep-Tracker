@@ -67,6 +67,24 @@ let DiaryStackScreen = () => {
   );
 }
 
+const GraphStack = createStackNavigator();
+let GraphStackScreen = () => {
+  return (
+    <GraphStack.Navigator>
+      <GraphStack.Screen name="Graph" component={GraphScreen} />
+    
+    </GraphStack.Navigator>
+  );
+}
+const SettingsStack = createStackNavigator();
+let SettingsStackScreen = () => {
+  return (
+    <SettingsStack.Navigator>
+      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+    
+    </SettingsStack.Navigator>
+  );
+}
 const Tab = createBottomTabNavigator();
 let TabNavigationScreens = () => {
   return (
@@ -98,8 +116,8 @@ let TabNavigationScreens = () => {
       }}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="Diary" component={DiaryStackScreen} />
-      <Tab.Screen name="Graph" component={GraphScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Graph" component={GraphStackScreen} />
+      <Tab.Screen name="Settings" component={SettingsStackScreen} />
     </Tab.Navigator>
   );
 }
