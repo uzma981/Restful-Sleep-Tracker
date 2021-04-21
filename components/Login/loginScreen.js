@@ -121,7 +121,7 @@ export default function SignInScreen({navigation}){
             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
-          </View >
+          </View>
     );
   };
 
