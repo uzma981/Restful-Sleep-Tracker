@@ -5,6 +5,7 @@ export class SleepObject {
   bedTime;
   sleepTime;
   wakeUpTime;
+  diaryEntry;
   outOfBedTime;
 
   constructor(startDate, stopDate) {
@@ -17,10 +18,12 @@ export class SleepObject {
   getSleepTime() { return this.sleepTime; }
   getWakeUpTime() { return this.wakeUpTime; }
   getOutOfBedTime() { return this.outOfBedTime; }
+  getDiaryEntry() { return this.diaryEntry; }
   setBedTime(bedTime) { this.bedTime = bedTime; }
   setSleepTime(sleepTime) { this.sleepTime = sleepTime; }
   setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
   setOutOfBedTime(outOfBedTime) { this.outOfBedTime = outOfBedTime; }
+  setDiaryEntry(diaryEntry) { this.diaryEntry = diaryEntry; }
 }
 
 global.sleepObjects = new Object();
