@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text , Dimensions,Image, StyleSheet, TouchableOpacity,Linking} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {LinearGradient} from 'expo-linear-gradient';
+
 import {
   LineChart,
   BarChart,
@@ -24,10 +25,46 @@ function GraphScreen({ navigation }) {
     barPercentage: 0.5,
     useShadowColorFromDataset: false // optional
   };
+  const data = {
+    labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat","Sun"],
+    datasets: [
+      {
+        data: [2, 3, 12, 7, 10, 8],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Sleep"] // optional
+  };
+  const screenWidth = Dimensions.get("window").width;
     return (
-
+   
      <View style={styles.container}>
+        <ScrollView>
      <LinearGradient colors={['#003049','#581a87']} style={{flex:1}}>
+<View>
+
+<LineChart
+  data={data}
+  width={screenWidth}
+  height={220}
+  chartConfig={chartConfig}
+/>
+</View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <View>
  
@@ -125,7 +162,7 @@ function GraphScreen({ navigation }) {
 </View>
 </TouchableOpacity>
 </ScrollView>
-</LinearGradient>
+</LinearGradient></ScrollView>
   </View>
  
 
