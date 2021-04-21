@@ -15,8 +15,23 @@ global.allDates = new Array(); //filled with only dates dd/mm/yy
 global.info;
 global.pickedDate;
 
+var sleepObject = new SleepObject();
+
 global.mappedData = new HashMap();
 
+export function addToSleepObject(){
+  if(global.sleepObjects[pickedDate] == undefined){
+    alert("hello");
+    //var sleepObject = new SleepObject();
+    sleepObject.setDiaryEntry(answer);
+    global.sleepObjects[global.pickedDate] = sleepObject;
+  }
+  console.log(global.sleepObjects);
+  //console.log("sleep" , global.sleepObjects["20-04-2021"]);
+}
+export function testSleepObject(){
+
+}
 
 export function addToHashMap(pickedDate, answer){
 if(pickedDate !=null && answer != null){
@@ -54,8 +69,12 @@ export function saveNewInfo(answer, navigation) {
       },
     ],
   });
-  sleep.setDiaryEntry(mappedData);//update to sleep object
-  console.log(global.sleep.getDiaryEntry());
+ // sleep.setDiaryEntry(mappedData);//update to sleep object
+ if(global.sleepObjects[pickedDate].getDiaryEntry() != null){
+  sleepObject.setDiaryEntry(answer);
+  global.sleepObjects[global.pickedDate] = sleepObject;
+ }
+ console.log(global.sleepObjects);
 }
 
 export function deleteEntry(date, navigation) {
@@ -78,8 +97,13 @@ export function deleteEntry(date, navigation) {
   }
   alert("Deleted Successfully!");
   navigation.push('Calendar');
-  sleep.setDiaryEntry(mappedData);//update to sleep object
-  console.log(global.sleep.getDiaryEntry());
+  if(global.sleepObjects[pickedDate].getDiaryEntry() != null){
+    //sleepObject.setDiaryEntry(answer);
+    global.sleepObjects[global.pickedDate] = undefined;
+   }
+   console.log(global.sleepObjects);
+ // sleep.setDiaryEntry(mappedData);//update to sleep object
+  //console.log(global.sleep.getDiaryEntry());
 }
 
 export function getAnswers(date, info) {
@@ -104,13 +128,14 @@ export function addToArray() {
     //######################
     mappedData.set(pickedDate, answer); //hashmap
     //AddData();
-    sleep.setDiaryEntry(mappedData);//update to sleep object
+  //  sleep.setDiaryEntry(mappedData);//update to sleep object
 
     /*sleep.forEach(function(value, key) {
       console.log(key + " : " + value);
     });*/
     console.log(global.sleep.getDiaryEntry());
-
+    console.log(answer);
+    addToSleepObject();
 
   }
 }
