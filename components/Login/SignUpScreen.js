@@ -47,13 +47,17 @@ export default function SignUpScreen({navigation}){
   }
 
 return (
-
-            <View style={{backgroundColor:"#FFF",height:"100%"}}>
+  
+  <View style={styles.container}>
+        <View style={styles.header}>
+      <Image source={require('../images/image1.jpg')} />
+    </View>
                 <Image source ={require('../images/logo2.png')}
                     style={{width: 150,
                         height: 150,
+                        marginTop:150,
+                        marginBottom: 150,
                         resizeMode: 'cover',
-                        marginTop: 100,
                         alignSelf:"center"
                  }}
                 />
@@ -61,7 +65,7 @@ return (
                 <View style={styles.backButton} >
     <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} //i have to fix this
     style={[styles.signIn,{
-        marginTop: -180,
+        marginTop: -370,
         left: 20,
         position: 'absolute'
     }]}>
@@ -76,11 +80,11 @@ return (
                  style={{
                      fontSize:30,
                      alignSelf:"center",
-                     marginTop:50
+                     marginTop:-120,
                  }}
                 >Registration</Text>
 
-                <View style={{
+    <View style={{
                     flexDirection:"row",
                     alignItems:"center",
                     marginHorizontal:55,
@@ -146,6 +150,7 @@ return (
   <Text style={styles.signupText}>Already have an account? Sign In</Text>
 </TouchableOpacity>
 </View>
+
         
         )
 };
@@ -154,14 +159,15 @@ return (
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        alignItems:'center',
-        justifyContent:'center',
-        flexDirection: 'column',
+        flexDirection: "column"
+        //alignItems:'center',
+        //justifyContent:'center',
+      //flexDirection: 'column',
     },
     signupText:{
         color:"black",
-        marginTop:30,
-        marginBottom:10,
+        marginTop:-120,
+        marginBottom:400,
         alignSelf: "center"
     },
     registerBtn:{
@@ -171,14 +177,29 @@ const styles=StyleSheet.create({
       height:40,
       alignItems:"center",
       justifyContent:"center",
-      marginTop:40,
-      marginBottom:10,
+      marginTop:50,
+      marginBottom:250,
       alignSelf: "center"
     },
     registerText:{
       color:"white",
       alignItems: "center",
-    }
+    },
+    header: {
+      flex: 1,
+      height: "100%",
+      width: "100%",
+    },
+    inputView:{
+      width:"80%",
+      backgroundColor:"#9370DB",
+      borderRadius:25,
+      height:50,
+      marginBottom:20,
+      justifyContent:"center",
+      padding:20,
+      alignSelf: "center"
+    },
 });
 
 // import React, { useState } from 'react';

@@ -6,10 +6,13 @@ const SignInScreen =({navigation}) => {
 
   return (
       <View style={styles.container}>
+        <View style={styles.header}>
+      <Image source={require('../images/image1.jpg')} />
+    </View>
         <View style={styles.backButton} >
     <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} //i have to fix this
     style={[styles.signIn,{
-        marginTop: -240,
+        marginTop: -100,
         left: -180,
         position: 'absolute'
     }]}>
@@ -44,17 +47,18 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // backgroundColor: '#FFFFFF',
+    //alignItems: 'center',
+    // justifyContent: 'center',
   },
   logo:{
     fontWeight:"bold",
     fontSize:25,
     color:"black",
-    marginTop:-100,
+    marginTop:100,
     marginBottom:40,
-    textAlign: "right"
+    textAlign: "left",
+    alignSelf: "center"
   },
   inputView:{
     width:"80%",
@@ -63,12 +67,8 @@ const styles = StyleSheet.create({
     height:50,
     marginBottom:20,
     justifyContent:"center",
-    padding:20
-  },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center"
+    padding:20,
+    alignSelf: "center"
   },
   inputText:{
     height:50,
@@ -85,20 +85,27 @@ const styles = StyleSheet.create({
     height:40,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:20,
-    marginBottom:10
+    marginTop:40,
+    marginBottom: 50,
+    alignSelf:"center"
   },
   resetText:{
     color:"white"
   },
   signupText:{
     color:"black",
-    marginTop:10,
-    marginBottom:140
+    marginTop:250,
+    marginBottom:140,
+    alignSelf: "center"
   },
   skipButton: {
     left: 140,
     top: 20,
+  },
+  header: {
+    flex: 1,
+    height: "100%",
+    width: "100%",
   }
 });
 

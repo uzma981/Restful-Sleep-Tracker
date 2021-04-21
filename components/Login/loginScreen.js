@@ -32,13 +32,15 @@ export default function SignInScreen({navigation}){
   return (
     
       <View style={styles.container}>
-        <View style={styles.skipButton} >
+        <View style={styles.header}>
+      <Image source={require('../images/image1.jpg')} />
+    </View>
+        <View style={styles.skipButton} >  
         <TouchableOpacity onPress={()=>navigation.navigate('Home')}
         style={[styles.signIn]}>
         <Text style={[styles.textSign,
                 {
                     color:'black'
-
                 }]}>Skip {'>'}</Text>
         </TouchableOpacity>
         </View>
@@ -85,7 +87,8 @@ export default function SignInScreen({navigation}){
                 position: 'relative',
                 top: '1%',
                 fontWeight: 'bold',
-                fontSize: 12
+                fontSize: 12,
+                alignSelf: "center"
               }} >
               OR LOGIN WITH SOCIAL MEDIA ACCOUNT?
           </Text>
@@ -95,7 +98,8 @@ export default function SignInScreen({navigation}){
               bottom: 30,
               justifyContent: 'space-evenly',
               top: '10%',
-              width: 200
+              width: 200,
+              alignSelf: "center"
             }} >
               <TouchableOpacity activeOpacity={0.5} >
                 <Image source={
@@ -114,7 +118,6 @@ export default function SignInScreen({navigation}){
                   }} />
               </TouchableOpacity>
             </View>
-        
             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
@@ -128,9 +131,7 @@ export default function SignInScreen({navigation}){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "column"
   },
   signIn: {
     marginTop: -60,
@@ -138,14 +139,16 @@ const styles = StyleSheet.create({
 },
 skipButton: {
   left: 140,
-  top: 140,
+  top: -80,
+  alignSelf: "center",
 },
   logo:{
     fontWeight:"bold",
     fontSize:35,
     color:"black",
-    marginTop:200,
-    marginBottom:40
+    marginTop:-10,
+    marginBottom:40,
+    alignSelf: "center"
   },
   inputView:{
     width:"80%",
@@ -154,7 +157,8 @@ skipButton: {
     height:50,
     marginBottom:20,
     justifyContent:"center",
-    padding:20
+    padding:20,
+    alignSelf: "center"
   },
   image: {
     flex: 1,
@@ -167,7 +171,8 @@ skipButton: {
   },
   forgot:{
     color:"black",
-    fontSize:12
+    fontSize:12,
+    alignSelf: "center"
   },
   loginBtn:{
     width:"40%",
@@ -177,7 +182,8 @@ skipButton: {
     alignItems:"center",
     justifyContent:"center",
     marginTop:40,
-    marginBottom:10
+    marginBottom:10,
+    alignSelf: "center"
   },
   loginText:{
     color:"white"
@@ -185,8 +191,14 @@ skipButton: {
   signupText:{
     color:"black",
     marginTop:10,
-    marginBottom:140
-  }
+    marginBottom:140,
+    alignSelf: "center"
+  },
+  header: {
+    flex: 1,
+    height: "100%",
+    width: "100%",
+}
 });
 // import React, { useState } from 'react';
 // import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
