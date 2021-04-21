@@ -20,10 +20,15 @@ var sleepObject = new SleepObject();
 global.mappedData = new HashMap();
 
 export function addToSleepObject(){
+  var temp = answer.split(",");
   if(global.sleepObjects[pickedDate] == undefined){
     alert("hello");
     //var sleepObject = new SleepObject();
-    sleepObject.setDiaryEntry(answer);
+   // sleepObject.setDiaryEntry(answer);
+    sleepObject.setBedTime(temp[0]);
+    sleepObject.setSleepTime(temp[1]);
+    sleepObject.setWakeUpTime(temp[2]);
+    sleepObject.setOutOfBedTime(temp[3]);
     global.sleepObjects[global.pickedDate] = sleepObject;
   }
   console.log(global.sleepObjects);
@@ -69,13 +74,21 @@ export function saveNewInfo(answer, navigation) {
       },
     ],
   });
+  var temp1 = answer.split(",");
+  console.log(temp1);
  // sleep.setDiaryEntry(mappedData);//update to sleep object
- if(global.sleepObjects[pickedDate].getDiaryEntry() != null){
-  sleepObject.setDiaryEntry(answer);
+ if(global.sleepObjects[pickedDate].getBedTime() != null){
+  //sleepObject.setDiaryEntry(answer);
+    sleepObject.setBedTime(temp1[0]);
+    sleepObject.setSleepTime(temp1[1]);
+    sleepObject.setWakeUpTime(temp1[2]);
+    sleepObject.setOutOfBedTime(temp1[3]);
   global.sleepObjects[global.pickedDate] = sleepObject;
  }
  console.log(global.sleepObjects);
 }
+
+
 
 export function deleteEntry(date, navigation) {
   for (var j = 0; j < global.answers.length; j++) { //1/04/2021, answer, 2/04/2021, answer = 4
@@ -97,7 +110,7 @@ export function deleteEntry(date, navigation) {
   }
   alert("Deleted Successfully!");
   navigation.push('Calendar');
-  if(global.sleepObjects[pickedDate].getDiaryEntry() != null){
+  if(global.sleepObjects[pickedDate].getBedTime() != null){
     //sleepObject.setDiaryEntry(answer);
     global.sleepObjects[global.pickedDate] = undefined;
    }
