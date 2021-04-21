@@ -234,7 +234,7 @@ export default function SignInScreen({navigation}){
     
       <View style={styles.container}>
       <View style={styles.header}>
-       <Image source={require('../images/image1.jpg')} />
+       <Image source={require('../images/backgroundPurple.jpg')} />
 </View>
         <View style={styles.skipButton} >
         <TouchableOpacity onPress={()=>navigation.navigate('Home')}
@@ -242,11 +242,11 @@ export default function SignInScreen({navigation}){
             marginTop: -60,
             position: 'absolute'
         }]}>
-        <Text style={[styles.textSign,
+        <Text style={
                 {
                     color:'white'
 
-                }]}>Skip {'>'}</Text>
+                }}>Skip {'>'}</Text>
         </TouchableOpacity>
         </View>
         <Text style={styles.logo}>Welcome Back!</Text>
