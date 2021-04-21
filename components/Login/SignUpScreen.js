@@ -202,6 +202,7 @@ const styles=StyleSheet.create({
     },
 });
 
+
 // import React, { useState } from 'react';
 // import {Image, TextInput, View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 // import { MaterialCommunityIcons } from '@expo/vector-icons'; 

@@ -201,6 +201,7 @@ skipButton: {
 }
 });
 
+
 // import React, { useState } from 'react';
 // import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 // import * as users from '../../database/users.json';
