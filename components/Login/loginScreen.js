@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
 },
 skipButton: {
   left: 140,
-  top: -80,
+  top: -40,
   alignSelf: "center",
 },
   logo:{
