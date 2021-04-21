@@ -7,7 +7,7 @@ const SignInScreen =({navigation}) => {
   return (
       <View style={styles.container}>
         <View style={styles.header}>
-      <Image source={require('../images/image1.jpg')} />
+      <Image source={require('../images/backgroundPurple.jpg')} />
     </View>
         <View style={styles.backButton} >
     <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} //i have to fix this
@@ -16,11 +16,12 @@ const SignInScreen =({navigation}) => {
         left: -180,
         position: 'absolute'
     }]}>
+    
     <Text style={[styles.textSign,
             {
                 color:'black'
 
-            }]}> {'<'}Back </Text>
+            }]}> {'<'} Back </Text>
         </TouchableOpacity>
         </View>
         <Text style={styles.logo}>Forgot Password</Text>
@@ -38,7 +39,7 @@ const SignInScreen =({navigation}) => {
             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
           <Text style={styles.signupText}>Don't have an account? SignUp</Text>
         </TouchableOpacity>
-          </View >
+          </View>
     );
   };
 
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   logo:{
     fontWeight:"bold",
     fontSize:25,
-    color:"black",
+    color:"white",
     marginTop:100,
     marginBottom:40,
     textAlign: "left",

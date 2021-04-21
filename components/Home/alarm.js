@@ -43,7 +43,7 @@ export default function AlarmScreen({navigation}) {
           Sleep time: {dateStart.getHours().toString()} : {dateStart.getMinutes().toString()}
         </Text>
         <View>
-          <Button onPress={showTimepicker} title="Select bedtime" />
+          <Button onPress={showTimepicker} title="Select bed time" color ="581a87"/>
         </View>
         {show && (
           <DateTimePicker
@@ -60,7 +60,7 @@ export default function AlarmScreen({navigation}) {
           Wakeup time: {dateEnd.getHours().toString()} : {dateEnd.getMinutes().toString()}
         </Text>
         <View>
-          <Button onPress={showTimepicker} title="Select Wakeup time" />
+        <Button onPress={showTimepicker} title="Select wake up time" color ="581a87"/>
         </View>
         {show && (
           <DateTimePicker
