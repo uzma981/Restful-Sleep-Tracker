@@ -7,7 +7,7 @@ const SignInScreen =({navigation}) => {
   return (
       <View style={styles.container}>
         <View style={styles.header}>
-      <Image source={require('../images/backgroundPurple.jpg')} />
+      <Image source={require('../images/image1.jpg')} />
     </View>
         <View style={styles.backButton} >
     <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} //i have to fix this
