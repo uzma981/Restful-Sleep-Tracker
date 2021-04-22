@@ -92,7 +92,7 @@ return (
                     borderRadius:23,
                     paddingVertical:10
                 }}>
-                    <MaterialCommunityIcons name="email-outline" size={24} color="#BBBBFF" />
+                   
                   
                     <TextInput 
                         placeholder="Email"
@@ -109,7 +109,6 @@ return (
                         textContentType="emailAddress"
                         keyboardType="email-address"
                     />
-
                 </View>
                 <View style={{
                     flexDirection:"row",
@@ -122,8 +121,6 @@ return (
                     borderRadius:23,
                     paddingVertical:10
                 }}>
-                   <AntDesign name="lock" size={24} color="#BBBBFF" />
-                
                    <TextInput 
                         secureTextEntry
                         placeholder="Password"
