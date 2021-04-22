@@ -5,9 +5,6 @@ import { AntDesign } from '@expo/vector-icons';
 import * as users from '../../database/users.json';
 import * as FileSystem from 'expo-file-system';
 
-
-
-
 export default function SignUpScreen({navigation}){
 
   const [email, setEmail] = useState({ value: '', error: '' })

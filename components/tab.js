@@ -16,6 +16,13 @@ const textColors = {
   list: '#2d9cdb',
 };
 
+const tabNames = {
+  home: 'Home',
+  book: 'Diary',
+  analytics: 'Analytics',
+  list: 'Settings',
+}
+
 const Container = styled.TouchableWithoutFeedback``;
 
 const Background = styled.View`
@@ -49,7 +56,7 @@ export default function Tab({label, accessibilityState, onPress}) {
         <Ionicons name={iconName} size={20} color={textColors[label]} />
         {focused ? (
           <Label label={label}>
-            {label.charAt(0).toUpperCase() + label.slice(1)}
+            {tabNames[label]}
           </Label>
         ) : null}
       </Background>

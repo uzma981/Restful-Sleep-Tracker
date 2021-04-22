@@ -7,33 +7,41 @@ import { CircleButton } from '../config';
 
 export default function AlarmScreen({navigation}) {
   const [dateStart, setDateStart] = useState(new Date(1598051730000));
+  const [modeStart, setModeStart] = useState('time');
+  const [showStart, setShowStart] = useState(false);
+
   const [dateEnd, setDateEnd] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('time');
-  const [show, setShow] = useState(false);
+  const [modeEnd, setModeEnd] = useState('time');
+  const [showEnd, setShowEnd] = useState(false);
 
   const onChangeStart = (event, selectedDate) => {
     const currentDate = selectedDate || dateStart;
-    setShow(Platform.OS === 'ios');
+    setShowStart(Platform.OS === 'ios');
     setDateStart(currentDate);
+  };
+
+  const showModeStart = (currentMode) => {
+    setShowStart(true);
+    setModeStart(currentMode);
+  };
+
+  const showTimepickerStart = () => {
+    showModeStart('time');
   };
 
   const onChangeEnd = (event, selectedDate) => {
     const currentDate = selectedDate || dateEnd;
-    setShow(Platform.OS === 'ios');
+    setShowEnd(Platform.OS === 'ios');
     setDateEnd(currentDate);
   };
 
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
+  const showModeEnd = (currentMode) => {
+    setShowEnd(true);
+    setModeEnd(currentMode);
   };
 
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
+  const showTimepickerEnd = () => {
+    showModeEnd('time');
   };
 
   return (  
@@ -43,13 +51,13 @@ export default function AlarmScreen({navigation}) {
           Sleep time: {dateStart.getHours().toString()} : {dateStart.getMinutes().toString()}
         </Text>
         <View>
-          <Button onPress={showTimepicker} title="Select bed time" color ="581a87"/>
+          <Button onPress={showTimepickerStart} title="Select bed time" color ="581a87"/>
         </View>
-        {show && (
+        {showStart && (
           <DateTimePicker
             testID="dateTimePicker"
             value={dateStart}
-            mode={mode}
+            mode={modeStart}
             is24Hour={true}
             display="default"
             onChange={onChangeStart}
@@ -60,13 +68,13 @@ export default function AlarmScreen({navigation}) {
           Wakeup time: {dateEnd.getHours().toString()} : {dateEnd.getMinutes().toString()}
         </Text>
         <View>
-        <Button onPress={showTimepicker} title="Select wake up time" color ="581a87"/>
+        <Button onPress={showTimepickerEnd} title="Select wake up time" color ="581a87"/>
         </View>
-        {show && (
+        {showEnd && (
           <DateTimePicker
-            testID="dateTimePicker2"
+            testID="dateTimePicker"
             value={dateEnd}
-            mode={mode}
+            mode={modeEnd}
             is24Hour={true}
             display="default"
             onChange={onChangeEnd}
