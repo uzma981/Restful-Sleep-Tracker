@@ -48,9 +48,6 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#FFFFFF',
-    //alignItems: 'center',
-    // justifyContent: 'center',
   },
   logo:{
     fontWeight:"bold",
