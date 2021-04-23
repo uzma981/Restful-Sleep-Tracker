@@ -3,17 +3,17 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components';
 
 const bgColors = {
-  home: '#8000ff',
+  home: '#e5c1e5',
   book: '#e5c1e5',
   analytics: '#d7d8f8',
   list: '#bce3fa',
 };
 
 const textColors = {
-  home: '#DBC970',
-  book: '#f37ff3',
+  home: '#4b458c',
+  book: '#4b458c',
   analytics: '#4b458c',
-  list: '#2d9cdb',
+  list: '#4b458c',
 };
 
 const tabNames = {

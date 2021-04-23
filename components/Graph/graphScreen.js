@@ -56,16 +56,6 @@ function GraphScreen({ navigation }) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 <View>
  
   <LineChart

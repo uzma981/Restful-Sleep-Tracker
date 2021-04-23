@@ -25,10 +25,12 @@ export default function Clock({ navigation }) {
 
 const styles = StyleSheet.create({
   clockContainer: {
-    borderWidth: 1,
+    borderWidth: 5,
     borderColor: '#C5B4E3',
-    borderRadius: 15,
+    borderRadius: 20,
     flexDirection: 'column',
+    alignItems: 'center',
+    marginTop:85,
   },
   timeText: {
     color: '#999999',
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: '#999999',
-    fontSize: 20,
+    fontSize: 30,
     alignItems: 'center'
   },
 });
