@@ -1,4 +1,8 @@
 import { StyleSheet } from 'react-native';
+var HashMap = require('hashmap');
+import { SleepObject} from '../config.js'
+
+global.sleep = new SleepObject();
 
 global.question1;
 global.question2;
@@ -7,9 +11,45 @@ global.question4;
 
 global.answer;// full answers of 1 entry
 global.answers = new Array();//array
-global.allDates = new Array(); //filled with only dates
+global.allDates = new Array(); //filled with only dates dd/mm/yy
 global.info;
 global.pickedDate;
+
+var sleepObject = new SleepObject();
+
+global.mappedData = new HashMap();
+
+export function addToSleepObject(){
+  var temp = answer.split(",");
+  if(global.sleepObjects[pickedDate] == undefined){
+    alert("hello");
+    //var sleepObject = new SleepObject();
+   // sleepObject.setDiaryEntry(answer);
+    sleepObject.setBedTime(temp[0]);
+    sleepObject.setSleepTime(temp[1]);
+    sleepObject.setWakeUpTime(temp[2]);
+    sleepObject.setOutOfBedTime(temp[3]);
+    global.sleepObjects[global.pickedDate] = sleepObject;
+  }
+  console.log(global.sleepObjects);
+  //console.log("sleep" , global.sleepObjects["20-04-2021"]);
+}
+export function testSleepObject(){
+
+}
+
+export function addToHashMap(pickedDate, answer){
+if(pickedDate !=null && answer != null){
+  mappedData.set(pickedDate, answer);
+}
+}
+
+export function testHashMap(){
+//return mappedData.get(pickedDate);
+mappedData.forEach(function(value, key) {
+  console.log(key + " : " + value);
+});
+}
 
 export function validate24(question2, question4) {
   var regex = /^\d\.[0-5][0-9]$/;
@@ -20,6 +60,8 @@ export function saveNewInfo(answer, navigation) {
   for (var j = 0; j < global.answers.length; j++) {
     if (global.answers[j] == pickedDate) {
       global.answers.splice(j + 1, 1, answer);// find the date and replace the answer with new info
+      //#######################
+      mappedData.set(pickedDate, answer);
       break;
     }
   }
@@ -32,24 +74,49 @@ export function saveNewInfo(answer, navigation) {
       },
     ],
   });
+  var temp1 = answer.split(",");
+  console.log(temp1);
+ // sleep.setDiaryEntry(mappedData);//update to sleep object
+ if(global.sleepObjects[pickedDate].getBedTime() != null){
+  //sleepObject.setDiaryEntry(answer);
+    sleepObject.setBedTime(temp1[0]);
+    sleepObject.setSleepTime(temp1[1]);
+    sleepObject.setWakeUpTime(temp1[2]);
+    sleepObject.setOutOfBedTime(temp1[3]);
+  global.sleepObjects[global.pickedDate] = sleepObject;
+ }
+ console.log(global.sleepObjects);
 }
 
-export function deleteEntry(date, navigation) {//2/04/2021
+
+
+export function deleteEntry(date, navigation) {
   for (var j = 0; j < global.answers.length; j++) { //1/04/2021, answer, 2/04/2021, answer = 4
     if (global.answers[j] == date) {
       global.answers.splice(j, 1);// this removes the date from array and array length becomes 1 less
       global.answers.splice(j, 1);// answer moves one index back, instead of date in the same index, answer goes, this removes the answer
+      //###############
+      mappedData.delete(date);
       break;
     }
   }
+  var diffFormat = date.split("-");
+  diffFormat = diffFormat[2] + "-" + diffFormat[1] + "-" + diffFormat[0];
   for (var j = 0; j < global.allDates.length; j++) {
-    if (global.allDates[j] == date) {
+    if (global.allDates[j] == diffFormat) {
       global.allDates.splice(j, 1);
       break;
     }
   }
   alert("Deleted Successfully!");
   navigation.push('Calendar');
+  if(global.sleepObjects[pickedDate].getBedTime() != null){
+    //sleepObject.setDiaryEntry(answer);
+    global.sleepObjects[global.pickedDate] = undefined;
+   }
+   console.log(global.sleepObjects);
+ // sleep.setDiaryEntry(mappedData);//update to sleep object
+  //console.log(global.sleep.getDiaryEntry());
 }
 
 export function getAnswers(date, info) {
@@ -67,7 +134,22 @@ export function addToArray() {
     answers.push(pickedDate);
     answers.push(answer);
 
-    allDates.push(pickedDate);
+    var diffFormat = pickedDate.split("-");
+    diffFormat = diffFormat[2] + "-" + diffFormat[1] + "-" + diffFormat[0];// i need that in order to be able to mark filled days
+    //alert(diffFormat);
+    allDates.push(diffFormat);
+    //######################
+    mappedData.set(pickedDate, answer); //hashmap
+    //AddData();
+  //  sleep.setDiaryEntry(mappedData);//update to sleep object
+
+    /*sleep.forEach(function(value, key) {
+      console.log(key + " : " + value);
+    });*/
+    console.log(global.sleep.getDiaryEntry());
+    console.log(answer);
+    addToSleepObject();
+
   }
 }
 

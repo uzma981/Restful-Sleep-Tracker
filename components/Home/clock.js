@@ -6,7 +6,7 @@ import moment from "moment";
 import AlarmScreen from './alarm';
 
 export default function Clock({ navigation }) {
-  const [time, setTime] = useState(moment().format("LTS"));
+  const [time, setTime] = useState(moment().format("LT"));
   const [date, setDate] = useState(moment().format("LL"));
 
   return (
@@ -25,18 +25,19 @@ export default function Clock({ navigation }) {
 
 const styles = StyleSheet.create({
   clockContainer: {
-    marginTop: 50,
-    borderColor: 'orange',
+    borderWidth: 1,
+    borderColor: '#C5B4E3',
+    borderRadius: 15,
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems:'center'
   },
   timeText: {
     color: '#999999',
-    fontSize: 75,
+    fontSize: 90,
+    alignItems: 'center'
   },
   dateText: {
     color: '#999999',
     fontSize: 20,
+    alignItems: 'center'
   },
 });

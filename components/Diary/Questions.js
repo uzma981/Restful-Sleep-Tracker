@@ -97,6 +97,7 @@ export default function Questions({ navigation }) {
       <ScrollView style={styles.scrollView}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2D187E' }}>
           <View style={styles.column}>
+          <Text style={styles.text}>{global.pickedDate}</Text>
             <Text style={styles.text}>1. What time did you go to bed?</Text>
             <View>
               <Button

@@ -3,9 +3,8 @@ import {View, Text, BackHandler, StyleSheet, TouchableOpacity} from 'react-nativ
 import {LinearGradient} from 'expo-linear-gradient';
 
 import Clock from "./clock";
-import { CircleButton, globalStyles } from '../config';
+import { CircleButton, globalStyles, SleepObject } from '../config';
 import "../config";
-import SleepObject from '../config';
 import "./homeConfig";
 
 export default function SleepScreen({ navigation }) {
@@ -27,7 +26,7 @@ export default function SleepScreen({ navigation }) {
 
         <CircleButton
           text="Stop Sleep"
-          size={150}
+          size={200}
           color="#7986cb"
           textColor="white"
           fontSize={20}
@@ -49,7 +48,9 @@ const leaveSleep = ({navigation}) => {
 };
 
 const submitSleepData = () => {
-  let sleepObject = new SleepObject(global.start, global.stop);
+  var start = global.start;
+  var stop = global.stop;
+  let sleepObject = new SleepObject(start, stop);
   global.sleepObjects[global.start] = sleepObject;
 }
 

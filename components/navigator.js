@@ -18,13 +18,13 @@ import DiaryEntryScreen from './Diary/DiaryEntry';
 import EditScreen from './Diary/Edit';
 
 import GraphScreen from './Graph/graphScreen';
-
 import SettingsScreen from './Settings/settingsScreen';
-
 import SplashScreen from './splashscreen';
 import SignInScreen from './Login/loginScreen';
 import SignUpScreen from './Login/SignUpScreen';
 import ForgotPasswordScreen from './Login/ForgotPasswordScreen';
+
+import TabComponent from './tab';
 
 const Drawer = createDrawerNavigator();
 export default function Navigator() {
@@ -52,7 +52,7 @@ let HomeStackScreen = () => {
       <HomeStack.Screen name="Alarm" component={AlarmScreen} />
     </HomeStack.Navigator>
   );
-}
+};
 
 const DiaryStack = createStackNavigator();
 let DiaryStackScreen = () => {
@@ -65,59 +65,63 @@ let DiaryStackScreen = () => {
       <DiaryStack.Screen name="Edit" component={EditScreen} />
     </DiaryStack.Navigator>
   );
-}
+};
 
 const GraphStack = createStackNavigator();
 let GraphStackScreen = () => {
   return (
     <GraphStack.Navigator>
       <GraphStack.Screen name="Graph" component={GraphScreen} />
-    
     </GraphStack.Navigator>
   );
-}
+};
+
 const SettingsStack = createStackNavigator();
 let SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-    
     </SettingsStack.Navigator>
   );
-}
+};
+
 const Tab = createBottomTabNavigator();
 let TabNavigationScreens = () => {
   return (
-    <Tab.Navigator
-        screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          }
-          else if (route.name === 'Diary') {
-            iconName = focused ? 'book' : 'book-outline';
-          }
-          else if (route.name === 'Graph') {
-            iconName = focused ? 'analytics' : 'analytics-outline';
-          }
-          else if (route.name === 'Settings') {
-            iconName = focused ? 'list' : 'list-outline';
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
+    <Tab.Navigator 
       tabBarOptions={{
-        activeTintColor: '#9370DB',
-        inactiveTintColor: 'gray',
+        style: {
+          backgroundColor: '#9370DB',
+        }
       }}>
-      <Tab.Screen name="Home" component={HomeStackScreen} />
-      <Tab.Screen name="Diary" component={DiaryStackScreen} />
-      <Tab.Screen name="Graph" component={GraphStackScreen} />
-      <Tab.Screen name="Settings" component={SettingsStackScreen} />
+      <Tab.Screen
+        name="Home" 
+        component={HomeStackScreen} 
+        options={{
+          tabBarButton: (props) => <TabComponent label="home" {...props} />
+        }}
+      />
+      <Tab.Screen 
+        name="Diary" 
+        component={DiaryStackScreen} 
+        options={{
+          tabBarButton: (props) => <TabComponent label="book" {...props}/>
+        }}
+      />
+      <Tab.Screen 
+        name="Graph" 
+        component={GraphStackScreen} 
+        options={{
+          tabBarButton: (props) => <TabComponent label="analytics" {...props}/>
+        }}
+      />
+      <Tab.Screen 
+        name="Settings" 
+        component={SettingsStackScreen} 
+        options={{
+          tabBarButton: (props) => <TabComponent label="list" {...props}/>
+        }}
+      />
     </Tab.Navigator>
   );
-}
+};

@@ -5,9 +5,6 @@ import { AntDesign } from '@expo/vector-icons';
 import * as users from '../../database/users.json';
 import * as FileSystem from 'expo-file-system';
 
-
-
-
 export default function SignUpScreen({navigation}){
 
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -95,7 +92,7 @@ return (
                     borderRadius:23,
                     paddingVertical:10
                 }}>
-                    <MaterialCommunityIcons name="email-outline" size={24} color="#BBBBFF" />
+                   
                   
                     <TextInput 
                         placeholder="Email"
@@ -112,7 +109,6 @@ return (
                         textContentType="emailAddress"
                         keyboardType="email-address"
                     />
-
                 </View>
                 <View style={{
                     flexDirection:"row",
@@ -125,8 +121,6 @@ return (
                     borderRadius:23,
                     paddingVertical:10
                 }}>
-                   <AntDesign name="lock" size={24} color="#BBBBFF" />
-                
                    <TextInput 
                         secureTextEntry
                         placeholder="Password"
@@ -160,9 +154,6 @@ const styles=StyleSheet.create({
     container:{
         flex:1,
         flexDirection: "column"
-        //alignItems:'center',
-        //justifyContent:'center',
-      //flexDirection: 'column',
     },
     signupText:{
         color:"black",
@@ -201,6 +192,7 @@ const styles=StyleSheet.create({
       alignSelf: "center"
     },
 });
+
 
 // import React, { useState } from 'react';
 // import {Image, TextInput, View, Text, StyleSheet,TouchableOpacity} from 'react-native';

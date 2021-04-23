@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TextInput, Button,FlatList,TouchableWithoutFeedback,Keyboard,LinearGradient} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput, Button,FlatList,TouchableWithoutFeedback,Keyboard} from 'react-native';
 import Header from './header';
 import ActivityItem from './activityItem';
 import AddActivity from './addActivity';
-
+import {LinearGradient} from 'expo-linear-gradient';
 
 
 
@@ -47,13 +47,10 @@ export default function ActivityScreen (){
         Keyboard.dismiss();
         console.log('dismissed');
       }}>
-
-
    
     <View style={styles.container}>
-
+      <LinearGradient colors={['#2d187e','#003049']} style={{flex:1}}>
       <Header/>
-
       <View style={styles.content}>
           
           <AddActivity submitHandler={submitHandler}/>
@@ -64,15 +61,13 @@ export default function ActivityScreen (){
                   <ActivityItem item={item} pressHandler={pressHandler} />
                 )}
               />
-        </View>
+            </View>
  
-    </View>
-
-    
-    
-        </View> 
-        </TouchableWithoutFeedback>
-      );
+      </View>
+     </LinearGradient>
+    </View> 
+    </TouchableWithoutFeedback>
+    );
 
 
 
