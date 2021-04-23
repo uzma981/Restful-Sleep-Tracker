@@ -26,7 +26,7 @@ export default function SleepScreen({ navigation }) {
 
         <CircleButton
           text="Stop Sleep"
-          size={150}
+          size={200}
           color="#7986cb"
           textColor="white"
           fontSize={20}
