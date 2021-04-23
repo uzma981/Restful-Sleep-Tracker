@@ -51,6 +51,7 @@ export const globalStyles = StyleSheet.create({
   },
   clock: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
 });

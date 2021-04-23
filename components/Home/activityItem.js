@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginTop: 16,
     borderColor: '#bbb',
+    color: '#fff',
     borderWidth: 1,
     borderStyle: "dashed",
     borderRadius: 1,
