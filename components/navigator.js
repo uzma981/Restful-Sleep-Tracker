@@ -18,7 +18,11 @@ import DiaryEntryScreen from './Diary/DiaryEntry';
 import EditScreen from './Diary/Edit';
 
 import GraphScreen from './Graph/graphScreen';
+
 import SettingsScreen from './Settings/settingsScreen';
+import ProfileScreen from './Settings/profileScreen';
+import EditProfileScreen from './Settings/editProfileScreen';
+
 import SplashScreen from './splashscreen';
 import SignInScreen from './Login/loginScreen';
 import SignUpScreen from './Login/SignUpScreen';
@@ -81,6 +85,8 @@ let SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+      <SettingsStack.Screen name="Profile" component={ProfileScreen} />
+      <SettingsStack.Screen name="EditProfile" component={EditProfileScreen} />
     </SettingsStack.Navigator>
   );
 };
