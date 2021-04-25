@@ -33,11 +33,11 @@ export default function HomeScreen({ navigation }) {
 
           <CircleButton
             text="Start Sleep"
-            size={200}
+            size={180}
             color="#7986cb"
             textColor="white"
             fontSize={20}
-            margin={50}
+            margin={10}
             onPress={() => enterSleep({ navigation })}
           />
         </View>

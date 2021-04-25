@@ -26,8 +26,66 @@ let GraphScreen = ({ navigation }) => {
     barPercentage: 0.5,
     useShadowColorFromDataset: false // optional
   };
+<<<<<<< HEAD
 
   const chartConfig2 = {
+=======
+  const data = {
+    labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat","Sun"],
+    datasets: [
+      {
+        data: [2, 3, 12, 7, 10, 8],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Sleep"] // optional
+  };
+  const screenWidth = Dimensions.get("window").width;
+    return (
+   
+     <View style={styles.container}>
+        <ScrollView>
+     <LinearGradient colors={['#003049','#581a87']} style={{flex:1}}>
+<View>
+
+<LineChart
+  data={data}
+  width={screenWidth}
+  height={220}
+  chartConfig={chartConfig}
+/>
+</View>
+
+
+
+
+
+<View>
+ 
+  <LineChart
+    data={{
+      labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat","Sun"],
+      datasets: [
+        {
+          data: [
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100
+          ]
+        }
+      ]
+    }}
+    width={Dimensions.get("window").width} // from react-native
+    height={220}
+   // yAxisLabel="h"
+    yAxisSuffix="h"
+    yAxisInterval={1} // optional, defaults to 1
+    chartConfig={{
+>>>>>>> b7538afd52c29e26a61da8e978daa12860376967
       backgroundColor: "#581a87",
       backgroundGradientFrom: "#581a87",
       backgroundGradientTo: "#2D187E",
