@@ -113,6 +113,7 @@ const showAlert = () =>
 let submitChanges = ({navigation}, start, end) => {
   global.sleepTarget = start.getHours() + ":" + start.getMinutes();
   global.wakeUpTarget = end.getHours() + ":" + end.getMinutes();
+  console.log(end - start);
   showAlert();
   navigation.goBack();
 };
