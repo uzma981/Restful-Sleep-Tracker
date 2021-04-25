@@ -4,44 +4,7 @@ import {StyleSheet, Text, View, SafeAreaView, ScrollView, Button, TextInput, Ima
 import {styles, saveProfile} from './settingsConfig.js';
 
 
-/*let options = {
-  title: 'Select Image',
-  customButtons: [
-    { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
-  ],
-  storageOptions: {
-    skipBackup: true,
-    path: 'images',
-  },
-};
-
-/**
-* The first arg is the options object for customization (it can also be null or omitted for default options),
-* The second arg is the callback which sends object: response (more info in the API Reference)
-*/
-/*ImagePicker.showImagePicker(options, (response) => {
-console.log('Response = ', response);
-
-if (response.didCancel) {
-console.log('User cancelled image picker');
-} else if (response.error) {
-console.log('ImagePicker Error: ', response.error);
-} else if (response.customButton) {
-console.log('User tapped custom button: ', response.customButton);
-} else {
-const source = { uri: response.uri };
-
-// You can also display the image using data:
-// const source = { uri: 'data:image/jpeg;base64,' + response.data };
-
-this.setState({
- filePath: response,
- fileData: response.data,
- fileUri: response.uri
-});
-}
-});*/
-export default function SettingsScreen({navigation}) {
+export default function EditProfileScreen({navigation}) {
   const [number1, onChangeNumber1] = React.useState(null);
   const [number2, onChangeNumber2] = React.useState(null);
   const [number3, onChangeNumber3] = React.useState(null);
@@ -65,6 +28,7 @@ export default function SettingsScreen({navigation}) {
                 style={styles.input}
                 onChangeText={onChangeNumber1}
                 value={number1}
+                placeholder = {global.profile.get("name")}
                 autoCapitalize = 'words'
                 textAlign={'center'}
                 keyboardType="default"
@@ -77,6 +41,7 @@ export default function SettingsScreen({navigation}) {
                 style={styles.input}
                 onChangeText={onChangeNumber2}
                 value={number2}
+                placeholder = {global.profile.get("last")}
                 autoCapitalize = 'words'
                 textAlign={'center'}
                 keyboardType="default"
@@ -90,6 +55,7 @@ export default function SettingsScreen({navigation}) {
                 style={styles.input}
                 onChangeText={onChangeNumber3}
                 value={number3}
+                placeholder = {global.profile.get("age")}
                 maxLength= {2}
                 textAlign={'center'}
                 keyboardType="numeric"
@@ -103,7 +69,7 @@ export default function SettingsScreen({navigation}) {
               <TextInput
                 style={styles.input}
                 onChangeText={onChangeNumber4}
-                placeholder = 'F / M / N/A'
+                placeholder = {global.profile.get("gender")}
                 placeholderTextColor= 'grey'
                 autoCapitalize= 'characters'
                 value={number4}
@@ -120,6 +86,7 @@ export default function SettingsScreen({navigation}) {
               <TextInput
                 style={styles.input}
                 onChangeText={onChangeNumber5}
+                placeholder = {global.profile.get("email")}
                 value={number5}
                 textAlign={'center'}
                 keyboardType="email-address"
