@@ -2,15 +2,16 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, ScrollView, Button, TextInput, Image, } from 'react-native';
 
 import {styles, saveProfile} from './settingsConfig.js';
+import {Picker} from '@react-native-picker/picker';
 
+var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default function EditProfileScreen({navigation}) {
-  const [number1, onChangeNumber1] = React.useState(null);
-  const [number2, onChangeNumber2] = React.useState(null);
-  const [number3, onChangeNumber3] = React.useState(null);
-  const [number4, onChangeNumber4] = React.useState(null);
-  const [number5, onChangeNumber5] = React.useState(null);
-
+  const [number1, onChangeNumber1] = React.useState(global.profile.get("name"));
+  const [number2, onChangeNumber2] = React.useState(global.profile.get("last"));
+  const [number3, onChangeNumber3] = React.useState(global.profile.get("age"));
+  const [number5, onChangeNumber5] = React.useState(global.profile.get("email"));
+  const [selectedGender, setSelectedGender] = useState();
   return (  
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -66,17 +67,21 @@ export default function EditProfileScreen({navigation}) {
             <Text style={styles.text}>Gender</Text>
             <View>
             <SafeAreaView>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChangeNumber4}
-                placeholder = {global.profile.get("gender")}
-                placeholderTextColor= 'grey'
-                autoCapitalize= 'characters'
-                value={number4}
-                maxLength= {3}
-                textAlign={'center'}
-                keyboardType="default"
-              />
+            <View style={{backgroundColor: 'white', marginTop: 15, borderRadius:10, borderWidth: 1, borderColor:'black'}}> 
+            <Picker
+            
+          style={{height:30, width:150}}
+          selectedValue={selectedGender}
+          
+          onValueChange={(itemValue, itemIndex) =>
+            setSelectedGender(itemValue)
+          }>
+          <Picker.Item label="Pick" value="" />
+          <Picker.Item label="Female" value="Female" />
+          <Picker.Item label="Male" value="Male" />
+          <Picker.Item label="Prefer not to answer" value="N/A" />
+        </Picker>
+        </View>
             </SafeAreaView>
             </View>
           </View>
@@ -95,11 +100,14 @@ export default function EditProfileScreen({navigation}) {
             
           </View>
           
+          <View style={{width:'20%', marginLeft:'40%'}}>
           <Button
+          
             title="Submit"
             onPress={() => {
-              if (number1 !=null && number2 != null && number3 != null && number4 != null && number5 != null ) {
-               saveProfile(number1,number2,number3,number4, number5);
+              if(emailReg.test(number5)){
+                if (number1 !=null && number2 != null && number3 != null && selectedGender != undefined && number5 != null ) {
+                    saveProfile(number1,number2,number3,selectedGender, number5);
              
                 navigation.reset({
                   index: 0,
@@ -112,17 +120,13 @@ export default function EditProfileScreen({navigation}) {
               } else {
                 alert('Answer all questions!');
               }
+            }else{
+                alert('Invalid email address!')
             }
-              /* navigation.reset({
-                 index: 0,
-                 routes: [
-                   {
-                     name: 'Submit',
-                   },
-                 ],
-               })*/
-            }
+            
+            }}
           />
+          </View>
             </View>
       </ScrollView>
     </SafeAreaView>

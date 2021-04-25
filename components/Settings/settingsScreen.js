@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, ScrollView, Button, TextInput, Image, } from 'react-native';
 
 import {styles, saveProfile} from './settingsConfig.js';
-
+import {Picker} from '@react-native-picker/picker';
 
 /*let options = {
   title: 'Select Image',
@@ -48,6 +48,7 @@ export default function SettingsScreen({navigation}) {
   const [number4, onChangeNumber4] = React.useState(null);
   const [number5, onChangeNumber5] = React.useState(null);
 
+  const [selectedGender, setSelectedGender] = useState();
   return (  
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -100,20 +101,26 @@ export default function SettingsScreen({navigation}) {
             <Text style={styles.text}>Gender</Text>
             <View>
             <SafeAreaView>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChangeNumber4}
-                placeholder = 'F / M / N/A'
-                placeholderTextColor= 'grey'
-                autoCapitalize= 'characters'
-                value={number4}
-                maxLength= {3}
-                textAlign={'center'}
-                keyboardType="default"
-              />
+            <View style={{backgroundColor: 'white', marginTop: 15, borderRadius:10, borderWidth: 1, borderColor:'black'}}> 
+            <Picker
+            
+          style={{height:30, width:150}}
+          selectedValue={selectedGender}
+          
+          onValueChange={(itemValue, itemIndex) =>
+            setSelectedGender(itemValue)
+          }>
+          <Picker.Item label="Pick" value="" />
+          <Picker.Item label="Female" value="Female" />
+          <Picker.Item label="Male" value="Male" />
+          <Picker.Item label="Prefer not to answer" value="N/A" />
+        </Picker>
+        </View>
             </SafeAreaView>
             </View>
+            
           </View>
+        
           <View style={styles.row}>
             <Text style={styles.text}>Email</Text>
             <SafeAreaView>
@@ -126,13 +133,16 @@ export default function SettingsScreen({navigation}) {
               />
             </SafeAreaView>
             
-          </View>
           
+          </View>
+          <View style={{width:'20%', marginLeft:'40%'}}>
           <Button
+          
             title="Submit"
             onPress={() => {
-              if (number1 !=null && number2 != null && number3 != null && number4 != null && number5 != null ) {
-               saveProfile(number1,number2,number3,number4, number5);
+              if(emailReg.test(number5)){
+                if (number1 !=null && number2 != null && number3 != null && selectedGender != undefined && number5 != null ) {
+                    saveProfile(number1,number2,number3,selectedGender, number5);
              
                 navigation.reset({
                   index: 0,
@@ -145,18 +155,14 @@ export default function SettingsScreen({navigation}) {
               } else {
                 alert('Answer all questions!');
               }
+            }else{
+                alert('Invalid email address!')
             }
-              /* navigation.reset({
-                 index: 0,
-                 routes: [
-                   {
-                     name: 'Submit',
-                   },
-                 ],
-               })*/
-            }
+            
+            }}
           />
-            </View>
+          </View>
+          </View>
       </ScrollView>
     </SafeAreaView>
   );  

@@ -16,9 +16,9 @@ export default function ProfileScreen({navigation}) {
           }} 
           style={{width: 200, height: 200, borderRadius: 200/ 2}} 
         />
-        <Text>Hello, {global.profile.get("name")}</Text>
+        <Text  style={styles.text}>Hello, {global.profile.get("name")}</Text>
 
-        <View style={styles.row}>
+        <View style={styles.column, {marginTop:'50%', width:'20%', marginLeft:'40%'}}>
           <Button
             title="Edit"
             onPress={() => navigation.push('EditProfile', {
@@ -27,6 +27,7 @@ export default function ProfileScreen({navigation}) {
             })
             }
           />
+          <Text></Text>
           <Button
             title="Delete"
             onPress={() => Alert.alert(
