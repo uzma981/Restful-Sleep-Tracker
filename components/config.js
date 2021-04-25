@@ -36,13 +36,13 @@ export const deserialize = (json) => {
 };
 
 // write sleepObjects to json file
-export const save = () => {
+export const saveSleepData = () => {
   let json = JSON.stringify(global.sleepObjects); 
   FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'database/sleepdata.json', json);
 };
 
 // load json file to sleepObjects
-export const load = () => {
+export const loadSleepData = () => {
   let json = FileSystem.readAsStringAsync(FileSystem.documentDirectory + 
                'database/sleepdata.json', FileSystem.EncodingType.UTF8);
   global.sleepObjects = JSON.parse(json);

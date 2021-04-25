@@ -3,6 +3,7 @@ import {View, Text , Dimensions,Image, StyleSheet, TouchableOpacity,Linking} fro
 import { ScrollView } from 'react-native-gesture-handler';
 import {LinearGradient} from 'expo-linear-gradient';
 
+import { loadSleepData } from '../config';
 import '../config';
 
 import {
@@ -15,6 +16,8 @@ import {
 } from "react-native-chart-kit";
 
 let GraphScreen = ({ navigation }) => {
+
+  loadSleepData();
 
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
@@ -42,11 +45,10 @@ let GraphScreen = ({ navigation }) => {
         strokeWidth: "3",
         stroke: "#2D187E"
       }
-    }
-  };
+  }
 
   const data = {
-    labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat","Sun"], // x
+    labels: Object.keys(global.sleepObjects), // x
     datasets: [
       {
         data: [2, 3, 12, 7, 10, 8], // value plotted
@@ -89,7 +91,7 @@ let GraphScreen = ({ navigation }) => {
         }}
       />
     </View>
-
+  };
 
 <Text style={styles.textHeader}> 5 Tips for a Better Night's Sleep{' >'} </Text>
 
