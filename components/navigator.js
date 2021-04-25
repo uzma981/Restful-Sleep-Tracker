@@ -46,7 +46,7 @@ export default function Navigator() {
 const HomeStack = createStackNavigator();
 let HomeStackScreen = () => {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Activity" component={ActivityScreen} />
       <HomeStack.Screen name="Alarm" component={AlarmScreen} />

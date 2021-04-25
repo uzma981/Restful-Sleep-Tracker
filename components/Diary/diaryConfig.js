@@ -23,13 +23,19 @@ export function addToSleepObject(){
   var temp = answer.split(",");
   if(global.sleepObjects[pickedDate] == undefined){
     alert("hello");
-    //var sleepObject = new SleepObject();
-   // sleepObject.setDiaryEntry(answer);
+    var sleepObject = new SleepObject(global.pickedDate);
     sleepObject.setBedTime(temp[0]);
     sleepObject.setSleepTime(temp[1]);
     sleepObject.setWakeUpTime(temp[2]);
     sleepObject.setOutOfBedTime(temp[3]);
     global.sleepObjects[global.pickedDate] = sleepObject;
+  }
+  else {
+    let instance = global.sleepObject[pickedDate];
+    instance.setBedTime(temp[0]);
+    instance.setSleepTime(temp[1]);
+    instance.setWakeUpTime(temp[2]);
+    instance.setOutOfBedTime(temp[3]);
   }
   console.log(global.sleepObjects);
   //console.log("sleep" , global.sleepObjects["20-04-2021"]);

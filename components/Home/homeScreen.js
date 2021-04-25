@@ -3,9 +3,8 @@ import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 
 import Clock from "./clock";
-import { CircleButton, globalStyles } from '../config';
+import { CircleButton, globalStyles, SleepObject } from '../config';
 import '../config';
-import SleepObject from '../config';
 import './homeConfig';
 
 export default function HomeScreen({ navigation }) {

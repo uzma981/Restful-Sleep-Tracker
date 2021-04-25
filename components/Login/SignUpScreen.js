@@ -36,7 +36,7 @@ export default function SignUpScreen({navigation}){
               var myJSON=JSON.stringify(user)
               users.users.push(myJSON) 
               var newUsersList = JSON.stringify(users); 
-              FileSystem.writeAsStringAsync(FileSystem.documentDirectory + '../database/users.json', newUsersList);
+              FileSystem.writeAsStringAsync(FileSystem.documentDirectory + '../../database/users.json', newUsersList);
           }
         })
       }
