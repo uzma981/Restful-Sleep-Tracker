@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 var HashMap = require('hashmap');
-import { SleepObject, deserialize } from '../config.js'
+import { SleepObject, deserialize, addToSleep } from '../config.js'
 
 global.sleep = new SleepObject();
 
@@ -29,7 +29,8 @@ export function addToSleepObject(){
     sleepObject.setSleepTime(temp[1]);
     sleepObject.setWakeUpTime(temp[2]);
     sleepObject.setOutOfBedTime(temp[3]);
-    global.sleepObjects[global.pickedDate] = sleepObject.serialize();
+
+    addToSleep(sleepObject, global.pickedDate);
   }
   else {
     let instance = deserialize(global.sleepObject[pickedDate]);
@@ -37,7 +38,8 @@ export function addToSleepObject(){
     instance.setSleepTime(temp[1]);
     instance.setWakeUpTime(temp[2]);
     instance.setOutOfBedTime(temp[3]);
-    global.sleepObjects[global.pickedDate] = instance.serialize();
+
+    addToSleep(instance, global.pickedDate);
   }
   console.log(global.sleepObjects);
   //console.log("sleep" , global.sleepObjects["20-04-2021"]);
@@ -93,7 +95,7 @@ export function saveNewInfo(answer, navigation) {
     sleepObject.setWakeUpTime(temp1[2]);
     sleepObject.setOutOfBedTime(temp1[3]);
 
-    global.sleepObjects[global.pickedDate] = sleepObject.serialize();
+    addToSleep(sleepObject, global.pickedDate);
    }
  console.log(global.sleepObjects);
 }

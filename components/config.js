@@ -49,7 +49,7 @@ export const load = () => {
 };
 
 export const addToSleep = (instance, date) => {
-  sleepObjects[date] = instance.serialize();
+  global.sleepObjects[date] = instance.serialize();
 };
 
 export const CircleButton = props => (
