@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 var HashMap = require('hashmap');
-import { SleepObject} from '../config.js'
+import { SleepObject, deserialize } from '../config.js'
 
 global.sleep = new SleepObject();
 
@@ -15,7 +15,7 @@ global.allDates = new Array(); //filled with only dates dd/mm/yy
 global.info;
 global.pickedDate;
 
-var sleepObject = new SleepObject();
+var sleepObject;
 
 global.mappedData = new HashMap();
 
@@ -23,23 +23,26 @@ export function addToSleepObject(){
   var temp = answer.split(",");
   if(global.sleepObjects[pickedDate] == undefined){
     alert("hello");
-    var sleepObject = new SleepObject(global.pickedDate);
+    sleepObject = new SleepObject(global.pickedDate);
+
     sleepObject.setBedTime(temp[0]);
     sleepObject.setSleepTime(temp[1]);
     sleepObject.setWakeUpTime(temp[2]);
     sleepObject.setOutOfBedTime(temp[3]);
-    global.sleepObjects[global.pickedDate] = sleepObject;
+    global.sleepObjects[global.pickedDate] = sleepObject.serialize();
   }
   else {
-    let instance = global.sleepObject[pickedDate];
+    let instance = deserialize(global.sleepObject[pickedDate]);
     instance.setBedTime(temp[0]);
     instance.setSleepTime(temp[1]);
     instance.setWakeUpTime(temp[2]);
     instance.setOutOfBedTime(temp[3]);
+    global.sleepObjects[global.pickedDate] = instance.serialize();
   }
   console.log(global.sleepObjects);
   //console.log("sleep" , global.sleepObjects["20-04-2021"]);
 }
+
 export function testSleepObject(){
 
 }
@@ -84,17 +87,16 @@ export function saveNewInfo(answer, navigation) {
   console.log(temp1);
  // sleep.setDiaryEntry(mappedData);//update to sleep object
  if(global.sleepObjects[pickedDate].getBedTime() != null){
-  //sleepObject.setDiaryEntry(answer);
+    sleepObject = new SleepObject(global.pickedDate);
     sleepObject.setBedTime(temp1[0]);
     sleepObject.setSleepTime(temp1[1]);
     sleepObject.setWakeUpTime(temp1[2]);
     sleepObject.setOutOfBedTime(temp1[3]);
-  global.sleepObjects[global.pickedDate] = sleepObject;
- }
+
+    global.sleepObjects[global.pickedDate] = sleepObject.serialize();
+   }
  console.log(global.sleepObjects);
 }
-
-
 
 export function deleteEntry(date, navigation) {
   for (var j = 0; j < global.answers.length; j++) { //1/04/2021, answer, 2/04/2021, answer = 4

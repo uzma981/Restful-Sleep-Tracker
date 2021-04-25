@@ -9,9 +9,8 @@ export class SleepObject {
   wakeUpTime;
   outOfBedTime;
 
-  constructor(startDate, stopDate) {
+  constructor(startDate) {
     this.startDate = startDate;
-    this.stopDate = stopDate;
   }
 
   // store the time as moment.js variables
@@ -19,12 +18,10 @@ export class SleepObject {
   getSleepTime() { return this.sleepTime; }
   getWakeUpTime() { return this.wakeUpTime; }
   getOutOfBedTime() { return this.outOfBedTime; }
-  getDiaryEntry() { return this.diaryEntry; }
   setBedTime(bedTime) { this.bedTime = bedTime; }
   setSleepTime(sleepTime) { this.sleepTime = sleepTime; }
   setWakeUpTime(wakeUpTime) { this.wakeUpTime = wakeUpTime; }
   setOutOfBedTime(outOfBedTime) { this.outOfBedTime = outOfBedTime; }
-  setDiaryEntry(diaryEntry) { this.diaryEntry = diaryEntry; }
 
   serialize() {
     return JSON.stringify(this);

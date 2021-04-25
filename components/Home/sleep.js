@@ -48,10 +48,9 @@ const leaveSleep = ({navigation}) => {
 };
 
 const submitSleepData = () => {
-  var start = global.start;
-  var stop = global.stop;
-  let sleepObject = new SleepObject(start, stop);
-  global.sleepObjects[global.start] = sleepObject;
+  let start = global.start;
+  let sleepObject = new SleepObject(start);
+  global.sleepObjects[global.start] = sleepObject.serialize();
 }
 
 const styles = StyleSheet.create({  
