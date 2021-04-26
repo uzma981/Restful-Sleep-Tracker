@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 var HashMap = require('hashmap');
 //global.profile = new Object();
 global.profile = new HashMap();
-
+global.image;
 
 export function saveProfile(name,last,age,gender,email){
 profile.set("name" , name);

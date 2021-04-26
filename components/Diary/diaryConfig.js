@@ -156,8 +156,8 @@ export function addToArray() {
     /*sleep.forEach(function(value, key) {
       console.log(key + " : " + value);
     });*/
-    console.log(global.sleep.getDiaryEntry());
-    console.log(answer);
+    //console.log(global.sleep.getDiaryEntry());
+    //console.log(answer);
     addToSleepObject();
 
   }
