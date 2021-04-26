@@ -18,8 +18,6 @@ import {
 
 export default function GraphScreen({ navigation }) {
 
-  //loadSleepData();
-
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
