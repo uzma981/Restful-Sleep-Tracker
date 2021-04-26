@@ -1,9 +1,6 @@
-import React, { Component, setState } from 'react';
-import { Text, View, Button, LinearGradient } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import { TextInput } from 'react-native-gesture-handler';
-
-import { AddData, addData, testHashMap } from './diaryConfig';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { Calendar } from 'react-native-calendars';
 
 var nav;
 
@@ -26,13 +23,13 @@ class CalendarClass extends Component { // need a class in order to use states f
   }
 
   markDates = () => {//mark dates dynamically from array/ it needs to be an object in order to use it in Calendars 'markeddates' 
-    var obj = global.allDates.reduce((c, v) => Object.assign(c, { [v]: { selected: true , selectedColor: '#2D187E'} }), {});
+    var obj = global.allDates.reduce((c, v) => Object.assign(c, { [v]: { selected: true, selectedColor: '#2D187E' } }), {});
     this.setState({ marked: obj });
   }
   render() {
 
     function selectedDay(date) {
-      
+
       var isDateTaken = false; // create this variable every time date is picked from the calendar
       date = date.split("-");
       date = date[2] + "-" + date[1] + "-" + date[0];
