@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TextInput, Button,FlatList,TouchableWithoutFeedback,Keyboard} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button,FlatList,TouchableWithoutFeedback,Keyboard} from 'react-native';
 import Header from './header';
 import ActivityItem from './activityItem';
 import AddActivity from './addActivity';
@@ -7,7 +7,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 
 
 
-export default function ActivityScreen (){
+export default function ActivityScreen ({navigation}){
   const [selectedOptions, setSelectedOptions] = useState([
     { text: 'Drank coffee', key: '1' },
     { text: 'Went for a walk', key: '2' },
@@ -43,14 +43,31 @@ export default function ActivityScreen (){
 
 
     return (
+
       <TouchableWithoutFeedback onPress={() => {
         Keyboard.dismiss();
         console.log('dismissed');
       }}>
    
     <View style={styles.container}>
+
+    
       <LinearGradient colors={['#2d187e','#003049']} style={{flex:1}}>
-      <Header/>
+      <Header/><TouchableOpacity onPress={()=>navigation.navigate('Home')} 
+    style={[styles.signIn,{
+        marginTop: 50,
+        left: 1,
+        position: 'absolute'
+    }]}>
+    
+    <Text style={[styles.textSign,
+            {
+                color:'white'
+
+            }]}> {'<'} Back </Text>
+            
+
+        </TouchableOpacity>
       <View style={styles.content}>
           
           <AddActivity submitHandler={submitHandler}/>

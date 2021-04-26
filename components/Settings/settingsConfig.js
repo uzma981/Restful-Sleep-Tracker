@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     //justifyContent: 'flex-end',
     // height: 40,
     margin: 12,
-    width: 100,
+    width: 200,
     //marginLeft:20,
     borderWidth: 1,
     backgroundColor: 'white',
