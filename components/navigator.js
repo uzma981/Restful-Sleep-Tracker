@@ -25,7 +25,8 @@ import EditProfileScreen from './Settings/editProfileScreen';
 
 import SplashScreen from './splashscreen';
 import SignInScreen from './Login/loginScreen';
-import SignUpScreen from './Login/SignUpScreen';
+import SignUpScreen from './Login/signUp';
+import RegistrationScreen from './Login/signUp';
 import ForgotPasswordScreen from './Login/ForgotPasswordScreen';
 
 import TabComponent from './tab';
@@ -37,7 +38,8 @@ export default function Navigator() {
       <Drawer.Navigator initialRouteName="Splash">
         <Drawer.Screen name="Splash" component={SplashScreen} />
         <Drawer.Screen name="SignIn" component={SignInScreen} />
-        <Drawer.Screen name="SignUp" component={SignUpScreen} />
+        {/* <Drawer.Screen name="SignUp" component={SignUpScreen} /> */}
+        <Drawer.Screen name="Registration" component={RegistrationScreen} />
         <Drawer.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Drawer.Screen name="Home" component={TabNavigationScreens} />
         <Drawer.Screen name="Sleep" component={SleepScreen} />

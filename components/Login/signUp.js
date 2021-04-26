@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-const ForgotPasswordScreen =({navigation}) => {
+const RegistrationScreen =({navigation}) => {
 
   return (
       <View style={styles.container}>
@@ -10,10 +10,12 @@ const ForgotPasswordScreen =({navigation}) => {
       <Image source={require('../images/image1.jpg')} />
     </View>
         <View style={styles.backButton} >
-    <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} //i have to fix this
+
+
+    <TouchableOpacity onPress={()=>navigation.navigate('SignIn')} 
     style={[styles.signIn,{
-        marginTop: -100,
-        left: -180,
+        marginTop: 35,
+        left: 10,
         position: 'absolute'
     }]}>
     
@@ -22,9 +24,27 @@ const ForgotPasswordScreen =({navigation}) => {
                 color:'black'
 
             }]}> {'<'} Back </Text>
+            
+
         </TouchableOpacity>
         </View>
-        <Text style={styles.logo}>Forgot Password</Text>
+        <Text style={styles.logo}>Register</Text>
+
+<Image source ={require('../images/logo2.png')}
+                    style={{width: 150,
+                        height: 150,
+                        // marginTop:5,
+                         marginBottom: 10,
+                        resizeMode: 'cover',
+                        alignSelf:"center"
+                 }}
+                />
+
+
+
+
+
+
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
@@ -32,19 +52,47 @@ const ForgotPasswordScreen =({navigation}) => {
             placeholderTextColor="white"
             />
         </View>
+        <View style={styles.inputView} >
+          <TextInput  
+            style={styles.inputText}
+            placeholder="Password" 
+            placeholderTextColor="white" 
+            secureTextEntry
+            />
+        </View>
+
+        {/* <TextInput 
+                       
+                        placeholder="Password"
+                        placeholderTextColor="#9370DB"
+                        fontSize="15"
+                        style={{paddingHorizontal:10}}
+                        // returnKeyType="done"
+                        // value={password.value}
+                        // onChangeText={(text) => setPassword({ 
+                        // value: text, error: '' })}
+                        // error={!!password.error}
+                        // errorText={password.error}
+            
+                    /> */}
+
+
+
+
+
         <TouchableOpacity style={styles.resetBtn}>
-          <Text style={styles.resetText}>Reset</Text>
+          <Text style={styles.resetText}>Register</Text>
         </TouchableOpacity>
         
-            <TouchableOpacity onPress={()=>navigation.navigate('Registration')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}>
             {/* change */}
-          <Text style={styles.signupText}>Don't have an account? SignUp</Text>
+          <Text style={styles.signupText}>Have an account? Sign in</Text>
         </TouchableOpacity>
           </View>
     );
   };
 
-export default ForgotPasswordScreen;
+export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -54,8 +102,8 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     fontSize:25,
     color:"white",
-    marginTop:100,
-    marginBottom:40,
+    marginTop:50,
+    marginBottom:20,
     textAlign: "left",
     alignSelf: "center"
   },
@@ -64,7 +112,8 @@ const styles = StyleSheet.create({
     backgroundColor:"#9370DB",
     borderRadius:25,
     height:50,
-    marginBottom:20,
+    marginTop:10,
+    marginBottom:10,
     justifyContent:"center",
     padding:20,
     alignSelf: "center"
@@ -93,7 +142,7 @@ const styles = StyleSheet.create({
   },
   signupText:{
     color:"black",
-    marginTop:250,
+    marginTop:50,
     marginBottom:140,
     alignSelf: "center"
   },
