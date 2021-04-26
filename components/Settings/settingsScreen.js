@@ -1,9 +1,10 @@
-import React, {useState} from 'react';  
+import React, {useState, useEffect} from 'react';  
 import {StyleSheet, Text, View, SafeAreaView, ScrollView, Button, TextInput, Image, } from 'react-native';
 
 import {styles, saveProfile} from './settingsConfig.js';
-import {Picker} from '@react-native-picker/picker';
-
+import { Picker } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 /*let options = {
   title: 'Select Image',
   customButtons: [
@@ -42,6 +43,50 @@ this.setState({
 }
 });*/
 export default function SettingsScreen({navigation}) {
+
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  const takeImage = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
   const [number1, onChangeNumber1] = React.useState(null);
   const [number2, onChangeNumber2] = React.useState(null);
   const [number3, onChangeNumber3] = React.useState(null);
@@ -54,12 +99,18 @@ export default function SettingsScreen({navigation}) {
       <ScrollView style={styles.scrollView}>
         <View style={{ flex: 1,  justifyContent: 'center', backgroundColor: '#2D187E' }}>
 
-        <Image 
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      <Button title="Take an image with camera" onPress={takeImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 150, height: 150 , borderRadius: 360}} />}
+    </View>
+
+       { /*<Image 
           source={{
             uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png'
           }} 
           style={{width: 200, height: 200, borderRadius: 200/ 2}} 
-        />
+        />*/}
           <View style={styles.row}>
           <Text style={styles.text}>First Name</Text>
           <TextInput
@@ -143,7 +194,7 @@ export default function SettingsScreen({navigation}) {
               if(emailReg.test(number5)){
                 if (number1 !=null && number2 != null && number3 != null && selectedGender != undefined && number5 != null ) {
                     saveProfile(number1,number2,number3,selectedGender, number5);
-             
+                    global.image = image;
                 navigation.reset({
                   index: 0,
                   routes: [
