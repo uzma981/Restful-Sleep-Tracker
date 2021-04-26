@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-
 import { styles } from './diaryConfig';
 import { addToArray } from './diaryConfig';
 

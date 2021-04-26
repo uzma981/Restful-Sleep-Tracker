@@ -1,19 +1,16 @@
 import React from 'react';
-import { Text, TouchableOpacity, Button, View, Alert, ScrollView } from 'react-native';
-
-import { styles } from './diaryConfig';
+import { Text, Button, View, Alert, ScrollView } from 'react-native';
+import { styles, testHashMap } from './diaryConfig';
 import { getAnswers } from './diaryConfig';
 import { deleteEntry } from './diaryConfig';
 import './diaryConfig';
 
-//'2017-10-26': {dots: [massage, workout], disabled: true}
 export default function DiaryEntry({ navigation }) {
   global.info = getAnswers(pickedDate, global.info);
   return (
     <ScrollView style={styles.scrollView}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2D187E' }}>
         <Text style={styles.text}>Your diary entry for {pickedDate} !</Text>
-
         <View style={styles.column}>
           <Text style={styles.text}>1. What time did you go to bed?</Text>
           <Text style={styles.text}>{global.info[0]}</Text>
@@ -30,7 +27,7 @@ export default function DiaryEntry({ navigation }) {
           <Text style={styles.text}>4. How long did it take you to get out of bed?</Text>
           <Text style={styles.text}>{global.info[3]} </Text>
         </View>
-        <View style={styles.row}>
+        <View style={styles.column}>
           <Button
             title="Edit"
             onPress={() => navigation.push('Edit', {
@@ -39,6 +36,7 @@ export default function DiaryEntry({ navigation }) {
             })
             }
           />
+          <Text></Text>
           <Button
             title="Delete"
             onPress={() => Alert.alert(
