@@ -15,7 +15,7 @@ export default function App() {
   var jsonObject = getSleepData();
 
   if (jsonObject === undefined) {
-    global.sleepObjects = tempJSON;
+    global.sleepObjects = JSON.parse(JSON.stringify(tempJSON));
     useEffect(() => {
       saveSleepData();   
     }, []);
@@ -23,7 +23,7 @@ export default function App() {
     console.log(global.sleepObjects);
   }
   else {
-    global.sleepObjects = JSON.strinfigy(jsonObject);
+    global.sleepObjects = JSON.parse(JSON.stringify(jsonObject));
     console.log("loaded async storage");
     console.log(global.sleepObjects);
   }

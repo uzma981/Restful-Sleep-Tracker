@@ -55,7 +55,7 @@ export default function GraphScreen({ navigation }) {
         strokeWidth: 2 // optional
       }
     ],
-    legend: ["Sleep"] // optional
+    legend: ["Time to fall asleep"] // optional
   };
 
   const data2 = {
@@ -67,7 +67,7 @@ export default function GraphScreen({ navigation }) {
         strokeWidth: 2 // optional
       }
     ],
-    legend: ["Sleep"] // optional
+    legend: ["Hours slept"] // optional
   };
 
   const screenWidth = Dimensions.get("window").width;
