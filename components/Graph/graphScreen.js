@@ -3,7 +3,8 @@ import {View, Text , Dimensions,Image, StyleSheet, TouchableOpacity,Linking} fro
 import { ScrollView } from 'react-native-gesture-handler';
 import {LinearGradient} from 'expo-linear-gradient';
 
-import { loadSleepData } from '../config';
+import SleepInfo from './sleepInfo';
+import { loadSleepData, getSleepToWakeUpTime, getBedToSleepTime } from '../config';
 import '../config';
 
 import {
@@ -15,9 +16,9 @@ import {
   StackedBarChart
 } from "react-native-chart-kit";
 
-let GraphScreen = ({ navigation }) => {
+export default function GraphScreen({ navigation }) {
 
-  loadSleepData();
+  //loadSleepData();
 
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
@@ -30,7 +31,7 @@ let GraphScreen = ({ navigation }) => {
     useShadowColorFromDataset: false // optional
   };
 
-  const charConfig2 = {
+  const chartConfig2 = {
       backgroundColor: "#581a87",
       backgroundGradientFrom: "#581a87",
       backgroundGradientTo: "#2D187E",
@@ -45,13 +46,25 @@ let GraphScreen = ({ navigation }) => {
         strokeWidth: "3",
         stroke: "#2D187E"
       }
-  }
+  };
 
-  const data = {
+  const data1 = {
     labels: Object.keys(global.sleepObjects), // x
     datasets: [
       {
-        data: [2, 3, 12, 7, 10, 8], // value plotted
+        data: getBedToSleepTime(), // value plotted
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Sleep"] // optional
+  };
+
+  const data2 = {
+    labels: Object.keys(global.sleepObjects), // x
+    datasets: [
+      {
+        data: getSleepToWakeUpTime(), // value plotted
         color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
         strokeWidth: 2 // optional
       }
@@ -62,91 +75,43 @@ let GraphScreen = ({ navigation }) => {
   const screenWidth = Dimensions.get("window").width;
 
   return (
-     <View style={styles.container}>
-        <ScrollView>
+   <View style={styles.container}>
+     <ScrollView>
      <LinearGradient colors={['#003049','#581a87']} style={{flex:1}}>
 
-    <View>
-      <LineChart
-        data={data}
-        width={screenWidth}
-        height={220}
-        chartConfig={chartConfig}
-      />
+      <View>
+        <LineChart
+          data={data1}
+          width={screenWidth}
+          height={220}
+          yAxisSuffix="h"
+          chartConfig={chartConfig}
+        />
+      </View>
+
+      <View>
+        <LineChart
+          data={data2}
+          width={screenWidth} // from react-native
+          height={220}
+         // yAxisLabel="h"
+          yAxisSuffix="h"
+          yAxisInterval={1} // optional, defaults to 1
+          chartConfig={chartConfig2}
+          bezier
+          style={{
+            marginVertical: 10,
+            borderRadius: 8
+          }}
+        />
+      </View>
+
+      <SleepInfo />
+    </LinearGradient>
+    </ScrollView>
     </View>
-
-    <View>
-      <LineChart
-        data={data}
-        width={screenWidth} // from react-native
-        height={220}
-       // yAxisLabel="h"
-        yAxisSuffix="h"
-        yAxisInterval={1} // optional, defaults to 1
-        chartConfig={chartConfig2}
-        bezier
-        style={{
-          marginVertical: 10,
-          borderRadius: 8
-        }}
-      />
-    </View>
-  };
-
-<Text style={styles.textHeader}> 5 Tips for a Better Night's Sleep{' >'} </Text>
-
-<ScrollView horizontal
-            showsHorizontalScrollIndicator={false}
-            style={{ marginHorizontal: 10, marginTop: 10 }}>
-
-<TouchableOpacity onPress={()=>Linking.openURL('https://www.webmd.com/sleep-disorders/features/reset-sleep-cycle')}>
-<View style={styles.boxone} >
-<Image source={require("../images/clock.jpg")} style={styles.img}/>
-<Text style={styles.text}>Internal Clock</Text>
-<View style={styles.boxtwo}></View>
-</View>
-</TouchableOpacity>
-
- <TouchableOpacity onPress={()=>Linking.openURL('https://www.sleepfoundation.org/nutrition/caffeine-and-sleep#:~:text=The%20recommended%20cut%2Doff%20time,can%20help%20minimize%20sleep%20problems.')}>
-<View style={styles.boxone} >
-<Image source={require("../images/coffeeintake.jpg")} style={styles.img}/>
-<Text style={styles.text}>Coffee Intake</Text>
-<View style={styles.boxtwo}></View>
-</View>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={()=>Linking.openURL('https://www.sleepfoundation.org/nutrition/food-and-drink-promote-good-nights-sleep')}>
-<View style={styles.boxone} >
-<Image source={require("../images/food.jpg")} style={styles.img}/>
-<Text style={styles.text}>Food and Drinks</Text>
-<View style={styles.boxtwo}></View>
-</View>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={()=>Linking.openURL('https://www.sleepfoundation.org/physical-activity/best-exercises-sleep')}>
-<View style={styles.boxone} >
-<Image source={require("../images/running2.png")} style={styles.img}/>
-<Text style={styles.text}>Exercise</Text>
-<View style={styles.boxtwo}></View>
-</View>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={()=>Linking.openURL('https://www.healthline.com/health/best-time-to-sleep#when-to-go-to-sleep')}>
-<View style={styles.boxone} >
-<Image source={require("../images/moon.jpg")} style={styles.img}/>
-<Text style={styles.text}>Sleep Patterns</Text>
-<View style={styles.boxtwo}></View>
-</View>
-</TouchableOpacity>
-</ScrollView>
-</LinearGradient>
-</ScrollView>
-  </View>
-    
-    );
-  };
-
-export default GraphScreen;
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
