@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, AsyncStorage } from 'react-native';
 import moment from "moment";
+//import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as FileSystem from 'expo-file-system';
 
@@ -29,34 +30,7 @@ export class SleepObject {
   }
 }
 
-//global.sleepObjects = new Object();
-global.sleepObjects = 
-{
-  "24/04/2021": {
-    "bedTime": "21:5",
-    "sleepTime": "23:30",
-    "wakeUpTime": "10:0",
-    "outOfBedTime": "10:20"
-  },
-  "24/05/2021": {
-    "bedTime": "21:20",
-    "sleepTime": "23:45",
-    "wakeUpTime": "8:45",
-    "outOfBedTime": "10:20"
-  },
-  "24/06/2021": {
-    "bedTime": "22:50",
-    "sleepTime": "22:55",
-    "wakeUpTime": "9:30",
-    "outOfBedTime": "10:20"
-  },
-  "24/07/2021": {
-    "bedTime": "20:15",
-    "sleepTime": "22:8",
-    "wakeUpTime": "11:15",
-    "outOfBedTime": "10:20"
-  }
-};
+global.sleepObjects = new Object();
 
 export const deserialize = (json) => {
   let object = JSON.parse(json);
@@ -64,17 +38,62 @@ export const deserialize = (json) => {
 };
 
 // write sleepObjects to json file
-export const saveSleepData = () => {
-  let json = JSON.stringify(global.sleepObjects); 
-  FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'database/sleepdata.json', json);
+export const saveSleepData = async() => {
+  //let json = JSON.stringify(global.sleepObjects); 
+  //FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'database/sleepdata.json', json);
+  try {
+    const json = JSON.stringify(global.sleepObjects);
+    await AsyncStorage.setItem("SleepData", json);
+  }
+  catch (err) {
+    alert(err);
+  }
+};
+
+// write to json using existing static object
+export const saveSleepDataStatic = async(json) => {
+  //let json = JSON.stringify(global.sleepObjects); 
+  //FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'database/sleepdata.json', json);
+  try {
+    const jsonValue = JSON.stringify(json);
+    await AsyncStorage.setItem("SleepData", jsonValue);
+  }
+  catch (err) {
+    alert(err);
+  }
 };
 
 // load json file to sleepObjects
-export const loadSleepData = () => {
-  let json = FileSystem.readAsStringAsync(FileSystem.documentDirectory + 
-               '../database/sleepdata.json', FileSystem.EncodingType.UTF8);
-  global.sleepObjects = JSON.parse(json);
+export const loadSleepData = async() => {
+  //let json = FileSystem.readAsStringAsync(FileSystem.documentDirectory + 
+               //'../database/sleepdata.json', FileSystem.EncodingType.UTF8);
+  //global.sleepObjects = JSON.parse(json);
+  try {
+    const jsonValue = await AsyncStorage.getItem('SleepData');
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  }
+  catch (err) {
+    alert(err);
+  }
 };
+
+const removeValue = async() => {
+  try {
+    await AsyncStorage.removeItem('SleepData')
+  }
+  catch(err) {
+    alert(err);
+  }
+}
+
+const clearAll = async() => {
+  try {
+    await AsyncStorage.clear()
+  }
+  catch(err) {
+    alert(err);
+  }
+}
 
 export const addToSleep = (instance, date) => {
   global.sleepObjects[date] = instance.serialize();

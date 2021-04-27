@@ -62,8 +62,8 @@ export default function SettingsScreen({ navigation }) {
       <ScrollView style={styles.scrollView}>
         <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#2D187E' }}>
 
-          <View style={styles.column, { flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button title="Pick an image from camera roll" onPress={pickImage} />
+          <View style={styles.column, { flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Button  title="Pick an image from camera roll"  onPress={pickImage} />
             <Text></Text>
             <Button title="Take an image with camera" onPress={takeImage} />
             {image && <Image source={{ uri: image }} style={{ width: 150, height: 150, borderRadius: 360 }} />}
