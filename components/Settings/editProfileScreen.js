@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, SafeAreaView, ScrollView, Button, TextInput, Image, } from 'react-native';
 
 import { styles, saveProfile } from './settingsConfig.js';
-import { Picker } from 'react-native'
+//import { Picker } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -54,9 +54,9 @@ export default function EditProfileScreen({ navigation }) {
 
   const [number1, onChangeNumber1] = React.useState(global.profile.get("name"));
   const [number2, onChangeNumber2] = React.useState(global.profile.get("last"));
-  const [number3, onChangeNumber3] = React.useState(global.profile.get("age"));
-  const [number5, onChangeNumber5] = React.useState(global.profile.get("email"));
-  const [selectedGender, setSelectedGender] = useState();
+  //const [number3, onChangeNumber3] = React.useState(global.profile.get("age"));
+ const [number5, onChangeNumber5] = React.useState(global.profile.get("email"));
+  //const [selectedGender, setSelectedGender] = useState();
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -94,7 +94,7 @@ export default function EditProfileScreen({ navigation }) {
               />
             </SafeAreaView>
           </View>
-          <View style={styles.row}>
+          {/*<View style={styles.row}>
             <Text style={styles.text}>Age</Text>
             <SafeAreaView>
               <TextInput
@@ -108,7 +108,8 @@ export default function EditProfileScreen({ navigation }) {
               />
             </SafeAreaView>
           </View>
-          <View style={styles.row}>
+  */}
+         {/* <View style={styles.row}>
             <Text style={styles.text}>Gender</Text>
             <View>
               <SafeAreaView>
@@ -130,6 +131,7 @@ export default function EditProfileScreen({ navigation }) {
               </SafeAreaView>
             </View>
           </View>
+                  */}
           <View style={styles.row}>
             <Text style={styles.text}>Email</Text>
             <SafeAreaView>
@@ -151,8 +153,8 @@ export default function EditProfileScreen({ navigation }) {
               title="Submit"
               onPress={() => {
                 if (emailReg.test(number5)) {
-                  if (number1 != null && number2 != null && number3 != null && selectedGender != undefined && number5 != null) {
-                    saveProfile(number1, number2, number3, selectedGender, number5);
+                  if (number1 != null && number2 != null /*&& number3 != null && selectedGender != undefined*/ && number5 != null) {
+                    saveProfile(number1, number2, /*number3, selectedGender,*/ number5);
                     global.image = image;
                     navigation.reset({
                       index: 0,

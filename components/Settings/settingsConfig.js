@@ -3,11 +3,11 @@ var HashMap = require('hashmap');
 global.profile = new HashMap();
 global.image;
 
-export function saveProfile(name, last, age, gender, email) {
+export function saveProfile(name, last, /*age, gender,*/ email) {
   profile.set("name", name);
   profile.set("last", last);
-  profile.set("age", age);
-  profile.set("gender", gender);
+ // profile.set("age", age);
+  //profile.set("gender", gender);
   profile.set("email", email);
   console.log(profile);
 }
