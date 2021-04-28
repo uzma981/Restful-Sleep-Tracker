@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button,FlatList,TouchableWithoutFeedback,Keyboard} from 'react-native';
+import {StyleSheet, Text, Alert, View, Image, TextInput, TouchableOpacity, Button,FlatList,TouchableWithoutFeedback,Keyboard} from 'react-native';
 import Header from './header';
 import ActivityItem from './activityItem';
 import AddActivity from './addActivity';
