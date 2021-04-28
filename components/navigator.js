@@ -7,7 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './Home/homeScreen';
-import AlarmScreen from './Home/alarm';
+import SleepGoalScreen from './Home/sleepGoal';
 import ActivityScreen from './Home/activity';
 import SleepScreen from './Home/sleep';
 
@@ -43,7 +43,7 @@ export default function Navigator() {
         <Drawer.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Drawer.Screen name="Home" component={TabNavigationScreens} />
         <Drawer.Screen name="Sleep" component={SleepScreen} />
-        <Drawer.Screen name="Alarm" component={AlarmScreen} />
+        <Drawer.Screen name="SleepGoal" component={SleepGoalScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -55,7 +55,7 @@ let HomeStackScreen = () => {
     <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Activity" component={ActivityScreen} />
-      <HomeStack.Screen name="Alarm" component={AlarmScreen} />
+      <HomeStack.Screen name="SleepGoal" component={SleepGoalScreen} />
     </HomeStack.Navigator>
   );
 };

@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import moment from "moment";
 
-import AlarmScreen from './alarm';
+import SleepGoalScreen from './sleepGoal';
 
 export default function Clock({ navigation }) {
   const [time, setTime] = useState(moment().format("LT"));

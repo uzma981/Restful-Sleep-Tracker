@@ -13,7 +13,7 @@ export default function HomeScreen({ navigation }) {
       <LinearGradient colors={['#2d187e','#003049']} style={{flex:1}}>
         <View style={globalStyles.clock}>
           <TouchableOpacity
-            onPress={() => navigation.push("Alarm")}>
+            onPress={() => navigation.push("SleepGoal")}>
             <Clock />
           </TouchableOpacity>
         </View>

@@ -4,6 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import {LinearGradient} from 'expo-linear-gradient';
 
 import { CircleButton } from '../config';
+import './homeConfig';
 
 export default function AlarmScreen({navigation}) {
   const [dateStart, setDateStart] = useState(new Date(1598051730000));
@@ -113,7 +114,7 @@ const showAlert = () =>
 let submitChanges = ({navigation}, start, end) => {
   global.sleepTarget = start.getHours() + ":" + start.getMinutes();
   global.wakeUpTarget = end.getHours() + ":" + end.getMinutes();
-  console.log(end - start);
+  saveTarget();
   showAlert();
   navigation.goBack();
 };
