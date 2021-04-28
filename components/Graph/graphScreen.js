@@ -51,11 +51,11 @@ export default function GraphScreen({ navigation }) {
     datasets: [
       {
         data: getBedToSleepTime(), // value plotted
-        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-        strokeWidth: 2 // optional
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
+        strokeWidth: 2
       }
     ],
-    legend: ["Time to fall asleep"] // optional
+    legend: ["Time to fall asleep"]
   };
 
   const data2 = {
@@ -63,11 +63,11 @@ export default function GraphScreen({ navigation }) {
     datasets: [
       {
         data: getSleepToWakeUpTime(), // value plotted
-        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-        strokeWidth: 2 // optional
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
+        strokeWidth: 2
       }
     ],
-    legend: ["Hours slept"] // optional
+    legend: ["Hours slept"]
   };
 
   const screenWidth = Dimensions.get("window").width;
@@ -90,11 +90,10 @@ export default function GraphScreen({ navigation }) {
       <View>
         <LineChart
           data={data2}
-          width={screenWidth} // from react-native
+          width={screenWidth}
           height={220}
-         // yAxisLabel="h"
           yAxisSuffix="h"
-          yAxisInterval={1} // optional, defaults to 1
+          yAxisInterval={1}
           chartConfig={chartConfig2}
           bezier
           style={{
