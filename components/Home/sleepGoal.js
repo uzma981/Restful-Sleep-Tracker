@@ -4,6 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import {LinearGradient} from 'expo-linear-gradient';
 
 import { CircleButton } from '../config';
+import { saveTarget } from './homeConfig';
 import './homeConfig';
 
 export default function AlarmScreen({navigation}) {
