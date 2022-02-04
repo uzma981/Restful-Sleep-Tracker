@@ -3,7 +3,7 @@
 ## Background:
 - Participated in a group project during second year university as part of the 'Professional Development' module.
 - Created a React Native mobile application using Expo to develop, build, deploy, and quickly iterate on iOS, Android, and web apps.
-- 
+
 ## Project goal
 As part of our research to create the best sleep tracker for our users and prospective stakeholders, we conducted research based on online articles, existing sleep apps, app reviews and questionnaires to set a strong foundation for the requirements and design of our mobile app. The main objective of the mobile app is to help users track their sleep cycle and improve their sleep quality. 
 
