@@ -1,45 +1,26 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+**Restful Sleep Tracker group project using React Native**
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+## Background:
+- Participated in a group project during second year university as part of the 'Professional Development' module.
+- Created a React Native mobile application using Expo to develop, build, deploy, and quickly iterate on iOS, Android, and web apps.
+- 
+## Project goal
+As part of our research to create the best sleep tracker for our users and prospective stakeholders, we conducted research based on online articles, existing sleep apps, app reviews and questionnaires to set a strong foundation for the requirements and design of our mobile app. The main objective of the mobile app is to help users track their sleep cycle and improve their sleep quality. 
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+## Implementation:
+- Navigation: In terms of the implementation there is a navigation hierarchy in which one navigator is nested inside another
+one. The root navigator used is a drawer navigator. The drawer navigator points towards a tab
+navigator which controls the bottom tab navigation, and each tab contains a stack navigator. 
+- Screens: home, sleep goal, activity tracker, graph screen, splash screen, diary, calender, login and sign up screens.
+- Database stored in 'users.json' - which records all the user registrations in a json format for the application.
 
----
+## My contribution:
+- Activity screen
+- Splash Screen
+- Home tab 
+- Bottom tab Navigation
+- Designing of Graphs
 
-## Edit a file
-
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-
----
-
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+![image](https://user-images.githubusercontent.com/80789801/152576773-77877c33-4e2c-416b-b84d-ffa5924dfb43.png)
+![image](https://user-images.githubusercontent.com/80789801/152576819-29ee295c-7bfe-44e6-99a3-250f1bf2a2a0.png)
+![image](https://user-images.githubusercontent.com/80789801/152576890-c6297dd3-e8ce-470e-b2dd-7666f2a6408f.png)
