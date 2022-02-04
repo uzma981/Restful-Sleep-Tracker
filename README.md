@@ -1,4 +1,4 @@
-**Restful Sleep Tracker group project using React Native**
+# Restful Sleep Tracker group project using React Native
 
 ## Background:
 - Participated in a group project during second year university as part of the 'Professional Development' module.
